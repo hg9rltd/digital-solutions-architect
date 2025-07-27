@@ -52,7 +52,7 @@
       gap: 0.5rem;
       margin-bottom: 1rem;
     }
-    select, .toggle {
+    select, .toggle, .link-button {
       background: none;
       border: 2px solid var(--accent-green);
       color: var(--text);
@@ -60,6 +60,8 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-block;
     }
     header {
       text-align: center;
@@ -79,8 +81,13 @@
     .description {
       font-size: 1.125rem;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       text-align: center;
+    }
+    /* All Services link */
+    .services-link {
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
     /* Carousel */
     .carousel {
@@ -123,7 +130,7 @@
     .next { right: 0.5rem; }
     @media (max-width: 600px) {
       header h1 { font-size: 1.5rem; }
-      select, .toggle { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+      select, .toggle, .link-button { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
       .nav { font-size: 1.2rem; padding: 0.2rem 0.5rem; }
     }
   </style>
@@ -148,6 +155,10 @@
       I help businesses establish or optimise their online presence with zero‑or‑low maintenance costs.
       We use free hosting (GitHub Pages), open‑source platforms, and lightweight VMs for internal or global communications.
     </p>
+
+    <div class="services-link">
+      <a href="services.html" class="link-button">All Services</a>
+    </div>
 
     <div class="carousel">
       <div class="slides">

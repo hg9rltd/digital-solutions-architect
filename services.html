@@ -11,10 +11,14 @@
       --accent-green: #00c96f; --accent-blue: #1e90ff;
     }
     [data-theme="light"] {
-      --bg: var(--bg-light); --text: var(--text-light); --container-bg: var(--container-light);
+      --bg: var(--bg-light);
+      --text: var(--text-light);
+      --container-bg: var(--container-light);
     }
     [data-theme="dark"] {
-      --bg: var(--bg-dark); --text: var(--text-dark); --container-bg: var(--container-dark);
+      --bg: var(--bg-dark);
+      --text: var(--text-dark);
+      --container-bg: var(--container-dark);
     }
     *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
     body {
@@ -74,22 +78,20 @@
       border-collapse: collapse;
       margin-top: .5rem;
     }
-    /* green vertical and horizontal lines by default */
+    /* Default all borders green */
     th, td {
+      border: 1px solid var(--accent-green);
       padding: .75rem;
       text-align: left;
-      border-left: 1px solid var(--accent-green);
-      border-right: 1px solid var(--accent-green);
-      border-bottom: 1px solid var(--accent-green);
     }
-    /* header background and text */
+    /* Header background */
     th {
       background: var(--accent-green);
       color: #fff;
     }
-    /* only the _inner_ header dividers (between THs) are black */
-    th + th {
-      border-left: 1px solid #000;
+    /* Only the inner header dividers black */
+    th:not(:last-child) {
+      border-right: 1px solid #000;
     }
     @media(max-width:600px){
       header h1{font-size:1.5rem;}
@@ -152,9 +154,9 @@
         th: ["Service","Description","Guide Price"],
         toggle:         "Toggle Light/Dark",
         basic: [
-          { title:"Starter Site",    desc:"Responsive GitHub Pages site", price:"£499" },
-          { title:"Payments",        desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
-          { title:"Communications",  desc:"Rocket.Chat on a £5/month VPS", price:"£149" }
+          { title:"Starter Site",   desc:"Responsive GitHub Pages site", price:"£499" },
+          { title:"Payments",       desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
+          { title:"Communications", desc:"Rocket.Chat on a £5/month VPS", price:"£149" }
         ],
         advanced: [
           { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", price:"£49" },
@@ -178,9 +180,9 @@
         th: ["服务","描述","参考价格"],
         toggle:         "切换明/暗模式",
         basic: [
-          { title:"入门网站",    desc:"响应式 GitHub Pages 网站", price:"£499" },
-          { title:"支付集成",    desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
-          { title:"通讯",        desc:"Rocket.Chat 在每月 £5 VPS 上", price:"£149" }
+          { title:"入门网站",   desc:"响应式 GitHub Pages 网站", price:"£499" },
+          { title:"支付集成",   desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
+          { title:"通讯",       desc:"Rocket.Chat 在每月 £5 VPS 上", price:"£149" }
         ],
         advanced: [
           { title:"自定义域名和 DNS 管理", desc:"获取并配置您自己的域名，使用 Let’s Encrypt 配置 SSL。", price:"£49" },
@@ -234,8 +236,8 @@
 
       // headers
       document.querySelectorAll('.th-service').forEach(th=>th.innerText=cfg.th[0]);
-      document.querySelectorAll('.th-desc').forEach(th=>th.innerText=cfg.th[1]);
-      document.querySelectorAll('.th-price').forEach(th=>th.innerText=cfg.th[2]);
+      document.querySelectorAll('.th-desc'   ).forEach(th=>th.innerText=cfg.th[1]);
+      document.querySelectorAll('.th-price'  ).forEach(th=>th.innerText=cfg.th[2]);
 
       // populate tables
       document.getElementById('basic-body').innerHTML = cfg.basic
@@ -244,8 +246,9 @@
         .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
     }
 
-    document.getElementById('languageSelect').addEventListener('change', e=>render(e.target.value));
-    render('en');  // initial
+    document.getElementById('languageSelect')
+      .addEventListener('change', e=>render(e.target.value));
+    render('en');
 
     function toggleTheme() {
       const html = document.documentElement;

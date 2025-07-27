@@ -62,6 +62,12 @@
       font-size: 0.85rem;
       text-decoration: none;
       display: inline-block;
+      transition: background 0.3s, color 0.3s;
+    }
+    /* hover turns green */
+    .link-button:hover {
+      background: var(--accent-green);
+      color: #fff;
     }
     header {
       text-align: center;
@@ -157,7 +163,7 @@
     </p>
 
     <div class="services-link">
-      <a href="services.html" class="link-button">All Services</a>
+      <a href="services.html" class="link-button" id="servicesBtn">All Services</a>
     </div>
 
     <div class="carousel">
@@ -186,40 +192,43 @@
   <script>
     const translations = {
       en: {
-        title: "Digital Solutions Architect Service",
-        tagline: "from HG9R",
+        title:       "Digital Solutions Architect Service",
+        tagline:     "from HG9R",
         description: "I help businesses establish or optimise their online presence with zero‑or‑low maintenance costs. We use free hosting (GitHub Pages), open‑source platforms, and lightweight VMs for internal or global communications.",
-        slide1: { title: "Starter Site",       desc: "Responsive GitHub Pages site" },
-        slide2: { title: "Payments",           desc: "Accept PayPal / Stripe / Crypto payments" },
-        slide3: { title: "Communications",     desc: "Rocket.Chat on a £5/month VPS" },
-        toggle:     "Toggle Light/Dark"
+        servicesBtn: "All Services",
+        slide1: { title: "Starter Site",    desc: "Responsive GitHub Pages site" },
+        slide2: { title: "Payments",        desc: "Accept PayPal / Stripe / Crypto payments" },
+        slide3: { title: "Communications",  desc: "Rocket.Chat on a £5/month VPS" },
+        toggle:      "Toggle Light/Dark"
       },
       "zh-CN": {
-        title: "数字解决方案架构服务",
-        tagline: "来自 HG9R",
+        title:       "数字解决方案架构服务",
+        tagline:     "来自 HG9R",
         description: "我帮助企业以零或低维护成本建立或优化其在线业务。我们使用免费托管（GitHub Pages）、开源平台和轻量级虚拟机进行内部或全球通信。",
-        slide1: { title: "入门网站",         desc: "响应式 GitHub Pages 网站" },
-        slide2: { title: "支付集成",         desc: "支持 PayPal / Stripe / 加密货币 支付" },
-        slide3: { title: "通讯",             desc: "Rocket.Chat 在每月 £5 VPS 上" },
-        toggle:     "切换明/暗模式"
+        servicesBtn: "所有服务",
+        slide1: { title: "入门网站",        desc: "响应式 GitHub Pages 网站" },
+        slide2: { title: "支付集成",        desc: "支持 PayPal / Stripe / 加密货币 支付" },
+        slide3: { title: "通讯",            desc: "Rocket.Chat 在每月 £5 VPS 上" },
+        toggle:      "切换明/暗模式"
       },
       fil: {
-        title: "Serbisyo ng Arkitekto ng Solusyong Digital",
-        tagline: "mula sa HG9R",
+        title:       "Serbisyo ng Arkitekto ng Solusyong Digital",
+        tagline:     "mula sa HG9R",
         description: "Tinutulungan kong magtayo o mag-optimize ng online presence ng mga negosyo nang may zero o mababang gastos sa pagpapanatili. Ginagamit namin ang libreng hosting (GitHub Pages), open-source na platform, at magagaan na VM para sa internal o global na komunikasyon.",
-        slide1: { title: "Pangunahing Site",  desc: "Responsive na GitHub Pages site" },
-        slide2: { title: "Bayad",             desc: "Tumatanggap ng PayPal / Stripe / Crypto payments" },
-        slide3: { title: "Komunikasyon",      desc: "Rocket.Chat sa £5/buwan na VPS" },
-        toggle:     "I-toggle Light/Dark"
+        servicesBtn: "Lahat ng Serbisyo",
+        slide1: { title: "Pangunahing Site", desc: "Responsive na GitHub Pages site" },
+        slide2: { title: "Bayad",           desc: "Tumatanggap ng PayPal / Stripe / Crypto payments" },
+        slide3: { title: "Komunikasyon",    desc: "Rocket.Chat sa £5/buwan na VPS" },
+        toggle:      "I-toggle Light/Dark"
       }
     };
 
-    // Swap language text
     document.getElementById('languageSelect').addEventListener('change', e => {
       const t = translations[e.target.value];
       document.getElementById('title').innerText        = t.title;
       document.getElementById('tagline').innerText      = t.tagline;
       document.getElementById('desc').innerText         = t.description;
+      document.getElementById('servicesBtn').innerText  = t.servicesBtn;
       document.getElementById('slide1-title').innerText = t.slide1.title;
       document.getElementById('slide1-desc').innerText  = t.slide1.desc;
       document.getElementById('slide2-title').innerText = t.slide2.title;
@@ -229,7 +238,6 @@
       document.getElementById('toggle').innerText       = t.toggle;
     });
 
-    // Theme toggle
     function toggleTheme() {
       const html = document.documentElement;
       html.setAttribute('data-theme',
@@ -237,10 +245,9 @@
       );
     }
 
-    // Carousel logic
     let currentIndex = 0;
     const slidesEl = document.querySelector('.slides');
-    const total   = document.querySelectorAll('.slide').length;
+    const total    = document.querySelectorAll('.slide').length;
     function showSlide(idx) {
       currentIndex = (idx + total) % total;
       slidesEl.style.transform = `translateX(-${currentIndex * 100}%)`;

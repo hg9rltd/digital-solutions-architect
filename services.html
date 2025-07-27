@@ -89,9 +89,12 @@
       background: var(--accent-green);
       color: #fff;
     }
-    /* Only the inner header dividers black */
-    th:not(:last-child) {
+    /* Theme‑aware inner header dividers */
+    [data-theme="dark"] th:not(:last-child) {
       border-right: 1px solid #000;
+    }
+    [data-theme="light"] th:not(:last-child) {
+      border-right: 1px solid #fff;
     }
     @media(max-width:600px){
       header h1{font-size:1.5rem;}

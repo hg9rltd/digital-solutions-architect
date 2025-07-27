@@ -2,79 +2,122 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Solutions Architect Service</title>
   <style>
     :root {
-      --bg-dark: #000;
-      --bg-light: #f5f5f5;
-      --text-dark: #e0e0e0;
-      --text-light: #111;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
+      --bg: #121212;
+      --surface: #1e1e1e;
+      --on-surface: #e0e0e0;
       --accent-green: #00c96f;
       --accent-blue: #1e90ff;
-    }
-    [data-theme="dark"] {
-      background: var(--bg-dark);
-      color: var(--text-dark);
+      --transition: 0.3s ease;
     }
     [data-theme="light"] {
-      background: var(--bg-light);
-      color: var(--text-light);
+      --bg: #f7f7f7;
+      --surface: #ffffff;
+      --on-surface: #333333;
     }
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 2rem;
-      transition: background 0.3s, color 0.3s;
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%; width: 100%;
+      background: var(--bg);
+      color: var(--on-surface);
+      font-family: var(--font-sans);
+      transition: background var(--transition), color var(--transition);
+      display: flex; flex-direction: column;
+      align-items: center;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.2rem;
+    header {
+      width: 100%; padding: 1rem 2rem;
+      background: var(--surface);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    header h1 {
+      margin: 0; font-size: 1.5rem; font-weight: 600;
+    }
+    header small {
+      font-size: 0.9rem; opacity: 0.7;
+    }
+    .container {
+      max-width: 700px; width: 100%;
+      background: var(--surface);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      margin: 2rem 1rem; padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .container h2 {
+      margin: 0 0 0.5rem;
+      font-size: 2rem;
       color: var(--accent-green);
     }
-    small {
-      display: block;
-      font-size: 1rem;
-      color: var(--text-dark);
+    .container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
     }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      max-width: 600px;
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem; font-weight: 500;
+      color: #fff;
+      background: var(--accent-blue);
+      border: none; border-radius: 8px;
+      text-decoration: none;
+      transition: background var(--transition);
     }
-    .toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: 2px solid var(--accent-green);
-      border-radius: 4px;
-      padding: 0.4rem 0.8rem;
-      cursor: pointer;
-      color: inherit;
-      font-size: 0.9rem;
+    .btn:hover {
+      background: #187bcd;
     }
-    a {
-      color: var(--accent-blue);
+    .toggle-btn {
+      position: fixed; top: 1rem; right: 1rem;
+      background: var(--accent-green);
+      border: none; padding: 0.5rem;
+      border-radius: 50%; cursor: pointer;
+      font-size: 1.2rem; color: #000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      transition: background var(--transition);
+    }
+    .toggle-btn:hover {
+      background: #00e080;
+    }
+    footer {
+      margin: auto 0 1rem; font-size: 0.85rem; opacity: 0.6;
+    }
+    footer a {
+      color: var(--accent-green);
       text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <button class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
-  <h1>Digital Solutions Architect Service</h1>
-  <small>from HG9R</small>
-  <p>
-    I help businesses go online or optimise their digital presence with zero‑or‑low maintenance costs.  
-    We use free hosting (GitHub Pages), open‑source tools, and lightweight VMs for internal comms or global reach.  
-    <a href="#contact">Get in touch</a> to start your free 30‑minute audit.
-  </p>
+  <button class="toggle-btn" aria-label="Toggle light/dark mode" onclick="toggleTheme()">🌗</button>
+  <header>
+    <h1>Digital Solutions Architect</h1>
+    <small>from HG9R</small>
+  </header>
+
+  <div class="container">
+    <h2>Your zero‑overhead digital partner</h2>
+    <p>
+      I help businesses launch or optimise their online presence using free hosting on GitHub Pages and open‑source tools,
+      ensuring minimal maintenance and cost. From sleek static sites to self‑hosted communications VMs, I’ve got you covered.
+    </p>
+    <a href="#contact" class="btn">Get Your Free Audit</a>
+  </div>
+
+  <footer>
+    &copy; 2025 HG9R Ltd. – <a href="https://www.linkedin.com/company/hg9r-ltd/" target="_blank">LinkedIn</a>
+  </footer>
 
   <script>
     function toggleTheme() {
       const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
     }
   </script>
 </body>

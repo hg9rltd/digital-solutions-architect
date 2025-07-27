@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digital Solutions Architect Service | HG9R</title>
+  <title>Digital Solutions Architect Service | HG9R</title>
   <style>
     :root {
       /* Light mode */
@@ -35,7 +35,7 @@
       color: var(--text);
       transition: background 0.3s, color 0.3s;
       padding: 1rem;
-      overflow-x: hidden; /* prevent horizontal scroll */
+      overflow-x: hidden;
     }
     .container {
       max-width: 800px;
@@ -46,10 +46,14 @@
       border-radius: 8px;
       box-shadow: rgba(0,0,0,0.1) 0 4px 12px;
     }
-    .toggle-container {
-      text-align: right;
+    .top-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
       margin-bottom: 1rem;
     }
+    .language-select,
     .toggle {
       background: none;
       border: 2px solid var(--accent-green);
@@ -58,6 +62,10 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.85rem;
+      appearance: none;
+    }
+    .language-select {
+      min-width: 150px;
     }
     header {
       text-align: center;
@@ -122,6 +130,7 @@
     .next { right: 0.5rem; }
     @media (max-width: 600px) {
       header h1 { font-size: 1.5rem; }
+      .language-select,
       .toggle { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
       .nav { font-size: 1.2rem; padding: 0.2rem 0.5rem; }
     }
@@ -129,23 +138,40 @@
 </head>
 <body>
   <div class="container">
-    <div class="toggle-container">
-      <button class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
+    <div class="top-controls">
+      <select class="language-select" onchange="/* add your language-switch logic here */">
+        <option value="en">English</option>
+        <option value="zh">Chinese (Simplified)</option>
+        <option value="zh-Hant">Chinese (Traditional)</option>
+        <option value="ru">Russian</option>
+        <option value="pl">Polish</option>
+        <option value="ja">Japanese</option>
+        <option value="th">Thai</option>
+        <option value="my">Burmese</option>
+        <option value="ms">Malay</option>
+        <option value="id">Indonesian</option>
+        <option value="fil">Filipino</option>
+        <option value="vi">Vietnamese</option>
+        <option value="ko">Korean</option>
+      </select>
+      <button class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
     </div>
+
     <header>
-      <h1>Digital Solutions Architect Service</h1>
+      <h1>Digital Solutions Architect Service</h1>
       <span>from HG9R</span>
     </header>
+
     <p class="description">
-      I help businesses establish or optimise their online presence with zero‑or‑low maintenance costs.
-      We use free hosting (GitHub Pages), open‑source platforms, and lightweight VMs for internal or global communications.
+      I help businesses establish or optimise their online presence with zero-or-low maintenance costs.
+      We use free hosting (GitHub Pages), open-source platforms, and lightweight VMs for internal or global communications.
     </p>
 
     <div class="carousel">
       <div class="slides">
         <div class="slide">
           <h3>Starter Site</h3>
-          <p>Responsive GitHub Pages site</p>
+          <p>Responsive GitHub Pages site</p>
           <p><strong>£499</strong></p>
         </div>
         <div class="slide">
@@ -177,12 +203,10 @@
     let currentIndex = 0;
     const slidesEl = document.querySelector('.slides');
     const total = document.querySelectorAll('.slide').length;
-
     function showSlide(idx) {
       currentIndex = (idx + total) % total;
       slidesEl.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
-    // Auto-advance every 5s
     setInterval(() => showSlide(currentIndex + 1), 5000);
   </script>
 </body>

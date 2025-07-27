@@ -3,48 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Advanced Services | Digital Solutions Architect Service</title>
+  <title>Services | Digital Solutions Architect Service</title>
   <style>
     :root {
-      /* Light mode */
-      --bg-light: #f4f6f8;
-      --text-light: #1a1a1a;
-      --container-light: #ffffff;
-      /* Dark mode */
-      --bg-dark: #121212;
-      --text-dark: #e0e0e0;
-      --container-dark: #1e1e1e;
-      /* Accents */
-      --accent-green: #00c96f;
-      --accent-blue: #1e90ff;
+      --bg-light: #f4f6f8; --text-light: #1a1a1a; --container-light: #ffffff;
+      --bg-dark:  #121212; --text-dark:  #e0e0e0; --container-dark:  #1e1e1e;
+      --accent-green: #00c96f; --accent-blue: #1e90ff;
     }
     [data-theme="light"] {
-      --bg: var(--bg-light);
-      --text: var(--text-light);
-      --container-bg: var(--container-light);
+      --bg: var(--bg-light); --text: var(--text-light); --container-bg: var(--container-light);
     }
     [data-theme="dark"] {
-      --bg: var(--bg-dark);
-      --text: var(--text-dark);
-      --container-bg: var(--container-dark);
+      --bg: var(--bg-dark); --text: var(--text-dark); --container-bg: var(--container-dark);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      transition: background 0.3s, color 0.3s;
       padding: 1rem;
       overflow-x: hidden;
+      transition: background .3s, color .3s;
     }
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 1.5rem;
       background: var(--container-bg);
       border: 4px solid var(--accent-green);
       border-radius: 8px;
       box-shadow: rgba(0,0,0,0.1) 0 4px 12px;
+      padding: 1.5rem;
     }
     .top-controls {
       display: flex;
@@ -52,7 +40,7 @@
       gap: 0.5rem;
       margin-bottom: 1rem;
     }
-    select, .toggle, .link-button {
+    select, .toggle {
       background: none;
       border: 2px solid var(--accent-green);
       color: var(--text);
@@ -60,8 +48,6 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.85rem;
-      text-decoration: none;
-      display: inline-block;
     }
     header {
       text-align: center;
@@ -71,28 +57,42 @@
       font-size: 2rem;
       color: var(--accent-green);
       word-break: break-word;
+      margin-bottom: .5rem;
     }
     .back-link {
-      margin-top: 0.5rem;
       display: inline-block;
+      color: var(--accent-blue);
+      text-decoration: none;
+      border: 2px solid var(--accent-green);
+      padding: .4rem .8rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
     }
+    .back-link:hover { background: var(--accent-green); color: #fff; }
+    section + section { margin-top: 2rem; }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1rem;
+      margin-top: .5rem;
     }
     th, td {
-      border: 1px solid var(--accent-green);
-      padding: 0.75rem;
+      padding: .75rem;
       text-align: left;
+      border-bottom: 1px solid var(--accent-green);
     }
     th {
       background: var(--accent-green);
       color: #fff;
+      /* vertical dividers visible against header */
+      border-left: 1px solid var(--container-bg);
+      border-right:1px solid var(--container-bg);
     }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.5rem; }
-      select, .toggle, .link-button { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+    /* first and last th keep side border */
+    th:first-child { border-left:1px solid var(--accent-green); }
+    th:last-child { border-right:1px solid var(--accent-green); }
+    @media(max-width:600px){
+      header h1{font-size:1.5rem;}
+      select,.toggle{font-size:.8rem;padding:.3rem .6rem;}
     }
   </style>
 </head>
@@ -104,118 +104,158 @@
         <option value="zh-CN">普通话</option>
         <option value="fil">Filipino</option>
       </select>
-      <button id="toggle" class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
+      <button id="toggle" class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
     </div>
 
     <header>
-      <h1 id="title">Advanced Services</h1>
-      <a id="back" href="index.html" class="link-button back-link">← Back to Home</a>
+      <h1 id="page-title">Services</h1>
+      <a id="back" href="index.html" class="back-link">← Back to Home</a>
     </header>
 
-    <table>
-      <thead>
-        <tr>
-          <th id="th-service">Service</th>
-          <th id="th-desc">Description</th>
-          <th id="th-price">Guide Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Custom Domain &amp; DNS Management</td>
-          <td>Acquire &amp; configure your own domain, SSL via Let’s Encrypt.</td>
-          <td>£49</td>
-        </tr>
-        <tr>
-          <td>SEO &amp; Analytics Setup</td>
-          <td>On‑page SEO, metadata, Google Analytics or Plausible dashboards.</td>
-          <td>£149</td>
-        </tr>
-        <tr>
-          <td>Content Management Training</td>
-          <td>Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.</td>
-          <td>£199</td>
-        </tr>
-        <tr>
-          <td>Performance Optimisation</td>
-          <td>Image compression, caching headers, Uptime Kuma monitoring.</td>
-          <td>£149</td>
-        </tr>
-        <tr>
-          <td>Branding &amp; Logo Design</td>
-          <td>Simple SVG logo, brand‑colours, favicon suite.</td>
-          <td>£299</td>
-        </tr>
-        <tr>
-          <td>Multi‑Language Support</td>
-          <td>Static‑site internationalisation for your key markets.</td>
-          <td>£199</td>
-        </tr>
-        <tr>
-          <td>Email Newsletter Integration</td>
-          <td>Mailchimp (free tier) or open‑source Mautic setup.</td>
-          <td>£249</td>
-        </tr>
-        <tr>
-          <td>Backup &amp; Disaster Recovery</td>
-          <td>Automated snapshots of sites &amp; VMs, offsite sync.</td>
-          <td>£199</td>
-        </tr>
-        <tr>
-          <td>Security Hardening</td>
-          <td>Firewall rules, fail2ban, SSL auto‑renewal.</td>
-          <td>£199</td>
-        </tr>
-        <tr>
-          <td>Chatbot / FAQ Bot</td>
-          <td>Botpress or open‑source chatbot embedded in static site.</td>
-          <td>£299</td>
-        </tr>
-        <tr>
-          <td>CI/CD Pipelines</td>
-          <td>GitHub Actions: build, test, lint and auto‑deploy on push.</td>
-          <td>£149</td>
-        </tr>
-      </tbody>
-    </table>
+    <section>
+      <h2 id="basic-heading">Basic Services</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="th-service">Service</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price">Guide Price</th>
+          </tr>
+        </thead>
+        <tbody id="basic-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2 id="advanced-heading">Advanced Services</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="th-service">Service</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price">Guide Price</th>
+          </tr>
+        </thead>
+        <tbody id="advanced-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </section>
   </div>
 
   <script>
-    const translations = {
+    const data = {
       en: {
-        title: "Advanced Services",
-        back:   "← Back to Home",
-        thService: "Service",
-        thDesc:    "Description",
-        thPrice:   "Guide Price"
+        pageTitle:      "Services",
+        back:           "← Back to Home",
+        basicHeading:   "Basic Services",
+        advancedHeading:"Advanced Services",
+        th: ["Service","Description","Guide Price"],
+        basic: [
+          { title:"Starter Site", desc:"Responsive GitHub Pages site", price:"£499" },
+          { title:"Payments",     desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
+          { title:"Communications", desc:"Rocket.Chat on a £5/month VPS", price:"£149" }
+        ],
+        advanced: [
+          { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", price:"£49" },
+          { title:"SEO & Analytics Setup",           desc:"On‑page SEO, metadata, Google Analytics or Plausible dashboards.", price:"£149" },
+          { title:"Content Management Training",     desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.", price:"£199" },
+          { title:"Performance Optimisation",        desc:"Image compression, caching headers, Uptime Kuma monitoring.", price:"£149" },
+          { title:"Branding & Logo Design",          desc:"Simple SVG logo, brand‑colours, favicon suite.", price:"£299" },
+          { title:"Multi‑Language Support",          desc:"Static‑site internationalisation for your key markets.", price:"£199" },
+          { title:"Email Newsletter Integration",    desc:"Mailchimp (free tier) or open‑source Mautic setup.", price:"£249" },
+          { title:"Backup & Disaster Recovery",      desc:"Automated snapshots of sites & VMs, offsite sync.", price:"£199" },
+          { title:"Security Hardening",              desc:"Firewall rules, fail2ban, SSL auto‑renewal.", price:"£199" },
+          { title:"Chatbot / FAQ Bot",               desc:"Botpress or open‑source chatbot embedded in static site.", price:"£299" },
+          { title:"CI/CD Pipelines",                 desc:"GitHub Actions: build, test, lint and auto‑deploy on push.", price:"£149" }
+        ]
       },
       "zh-CN": {
-        title: "高级服务",
-        back:   "← 返回首页",
-        thService: "服务",
-        thDesc:    "描述",
-        thPrice:   "参考价格"
+        pageTitle:      "服务",
+        back:           "← 返回首页",
+        basicHeading:   "基础服务",
+        advancedHeading:"高级服务",
+        th: ["服务","描述","参考价格"],
+        basic: [
+          { title:"入门网站", desc:"响应式 GitHub Pages 网站", price:"£499" },
+          { title:"支付集成", desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
+          { title:"通讯",     desc:"Rocket.Chat 在每月 £5 VPS 上", price:"£149" }
+        ],
+        advanced: [
+          { title:"自定义域名和 DNS 管理", desc:"获取并配置您自己的域名，使用 Let’s Encrypt 配置 SSL。", price:"£49" },
+          { title:"SEO 和分析设置",         desc:"页面 SEO、元数据、Google Analytics 或 Plausible 仪表板。", price:"£149" },
+          { title:"内容管理培训",           desc:"教授员工编辑 Markdown/Hugo/Jekyll 并通过 GitHub Actions 部署。", price:"£199" },
+          { title:"性能优化",               desc:"图像压缩、缓存头设置、Uptime Kuma 监控。", price:"£149" },
+          { title:"品牌和徽标设计",         desc:"简单的 SVG 徽标、品牌色和网站图标套件。", price:"£299" },
+          { title:"多语言支持",             desc:"为主要市场的静态站点提供国际化。", price:"£199" },
+          { title:"电子邮件通讯集成",       desc:"Mailchimp（免费版）或开源 Mautic 设置。", price:"£249" },
+          { title:"备份和灾难恢复",         desc:"自动快照网站和虚拟机，并进行异地同步。", price:"£199" },
+          { title:"安全加固",               desc:"防火墙规则、服务器 fail2ban 和 SSL 自动续期。", price:"£199" },
+          { title:"聊天机器人/常见问题机器人", desc:"在静态站点中嵌入 Botpress 或开源聊天机器人。", price:"£299" },
+          { title:"CI/CD 管道",            desc:"使用 GitHub Actions：构建、测试、Lint 并自动部署。", price:"£149" }
+        ]
       },
       fil: {
-        title: "Mga Advanced na Serbisyo",
-        back:   "← Bumalik sa Home",
-        thService: "Serbisyo",
-        thDesc:    "Paglalarawan",
-        thPrice:   "Patnubay na Presyo"
+        pageTitle:      "Mga Serbisyo",
+        back:           "← Bumalik sa Home",
+        basicHeading:   "Pangunahing Serbisyo",
+        advancedHeading:"Mga Advanced na Serbisyo",
+        th: ["Serbisyo","Paglalarawan","Patnubay na Presyo"],
+        basic: [
+          { title:"Pangunahing Site",     desc:"Responsive na GitHub Pages site", price:"£499" },
+          { title:"Bayad",                desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", price:"£199" },
+          { title:"Komunikasyon",         desc:"Rocket.Chat sa £5/buwan na VPS", price:"£149" }
+        ],
+        advanced: [
+          { title:"Pasadyang Domain at Pamamahala ng DNS", desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.", price:"£49" },
+          { title:"Pag-setup ng SEO at Analytics",           desc:"On-page SEO, metadata, Google Analytics o Plausible dashboard.", price:"£149" },
+          { title:"Pagsasanay sa Pamamahala ng Nilalaman",   desc:"Turuan ang staff gumawa ng Markdown/Hugo/Jekyll at mag-deploy gamit ang GitHub Actions.", price:"£199" },
+          { title:"Pag-optimize ng Pagganap",                desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.", price:"£149" },
+          { title:"Pagdidisenyo ng Branding at Logo",        desc:"Simple SVG logo, brand na mga kulay, favicon suite.", price:"£299" },
+          { title:"Suporta sa Maramihang Wika",             desc:"Internationalization ng static na site para sa iyong pangunahing merkado.", price:"£199" },
+          { title:"Integrasyon ng Email Newsletter",        desc:"Mailchimp (free tier) o open-source na Mautic setup.", price:"£249" },
+          { title:"Backup at Disaster Recovery",            desc:"Awtomatikong snapshots ng site at mga VM, offsite sync.", price:"£199" },
+          { title:"Pagpapatibay ng Seguridad",              desc:"Pangunahing firewall rules, fail2ban sa server, awtomatikong SSL renewal.", price:"£199" },
+          { title:"Chatbot / FAQ Bot",                     desc:"Botpress o open-source chatbot na naka-embed sa static site.", price:"£299" },
+          { title:"CI/CD Pipelines",                       desc:"GitHub Actions: build, test, lint at auto-deploy sa push.", price:"£149" }
+        ]
       }
     };
 
-    // swap UI text
+    function render(lang) {
+      const cfg = data[lang];
+      document.getElementById('page-title').innerText      = cfg.pageTitle;
+      document.getElementById('back').innerText            = cfg.back;
+      document.getElementById('basic-heading').innerText   = cfg.basicHeading;
+      document.getElementById('advanced-heading').innerText= cfg.advancedHeading;
+
+      // headers
+      document.querySelectorAll('.th-service').forEach(th => th.innerText = cfg.th[0]);
+      document.querySelectorAll('.th-desc'   ).forEach(th => th.innerText = cfg.th[1]);
+      document.querySelectorAll('.th-price'  ).forEach(th => th.innerText = cfg.th[2]);
+
+      // tables
+      const b = document.getElementById('basic-body');
+      b.innerHTML = cfg.basic.map(row =>
+        `<tr><td>${row.title}</td><td>${row.desc}</td><td>${row.price}</td></tr>`
+      ).join('');
+
+      const a = document.getElementById('advanced-body');
+      a.innerHTML = cfg.advanced.map(row =>
+        `<tr><td>${row.title}</td><td>${row.desc}</td><td>${row.price}</td></tr>`
+      ).join('');
+    }
+
     document.getElementById('languageSelect').addEventListener('change', e => {
-      const t = translations[e.target.value];
-      document.getElementById('title').innerText     = t.title;
-      document.getElementById('back').innerText      = t.back;
-      document.getElementById('th-service').innerText= t.thService;
-      document.getElementById('th-desc').innerText   = t.thDesc;
-      document.getElementById('th-price').innerText  = t.thPrice;
+      render(e.target.value);
     });
 
-    // theme toggle
+    // initial render
+    render('en');
+
+    // Dark/light toggle
     function toggleTheme() {
       const html = document.documentElement;
       html.setAttribute('data-theme',

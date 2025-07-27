@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Solutions Architect Service</title>
+  <style>
+    :root {
+      --bg-dark: #000;
+      --bg-light: #f5f5f5;
+      --text-dark: #e0e0e0;
+      --text-light: #111;
+      --accent-green: #00c96f;
+      --accent-blue: #1e90ff;
+    }
+    [data-theme="dark"] {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    [data-theme="light"] {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2rem;
+      transition: background 0.3s, color 0.3s;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+      color: var(--accent-green);
+    }
+    small {
+      display: block;
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      max-width: 600px;
+    }
+    .toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 2px solid var(--accent-green);
+      border-radius: 4px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      color: inherit;
+      font-size: 0.9rem;
+    }
+    a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
+  <h1>Digital Solutions Architect Service</h1>
+  <small>from HG9R</small>
+  <p>
+    I help businesses go online or optimise their digital presence with zero‑or‑low maintenance costs.  
+    We use free hosting (GitHub Pages), open‑source tools, and lightweight VMs for internal comms or global reach.  
+    <a href="#contact">Get in touch</a> to start your free 30‑minute audit.
+  </p>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+  </script>
+</body>
+</html>

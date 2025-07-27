@@ -54,7 +54,7 @@
     }
     header {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     header h1 {
       font-size: 2rem;
@@ -71,12 +71,25 @@
       border-radius: 4px;
       margin-bottom: 1rem;
     }
-    .back-link:hover { background: var(--accent-green); color: #fff; }
-    section + section { margin-top: 2rem; }
+    .back-link:hover {
+      background: var(--accent-green);
+      color: #fff;
+    }
+    .custom-note {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    section + section {
+      margin-top: 2rem;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 0.5rem;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: .5rem;
     }
     /* Default all borders green */
     th, td {
@@ -96,9 +109,9 @@
     [data-theme="light"] th:not(:last-child) {
       border-right: 1px solid #fff;
     }
-    @media(max-width:600px){
-      header h1{font-size:1.5rem;}
-      select,.toggle{font-size:.8rem;padding:.3rem .6rem;}
+    @media(max-width:600px) {
+      header h1 { font-size:1.5rem; }
+      select, .toggle { font-size:.8rem; padding:.3rem .6rem; }
     }
   </style>
 </head>
@@ -118,44 +131,51 @@
       <a id="back" href="index.html" class="back-link">← Back to Home</a>
     </header>
 
+    <div id="custom-services" class="custom-note">Custom services available on request.</div>
+
     <section>
       <h2 id="basic-heading">Basic Services</h2>
-      <table>
-        <thead>
-          <tr>
-            <th class="th-service">Service</th>
-            <th class="th-desc">Description</th>
-            <th class="th-price">Guide Price</th>
-          </tr>
-        </thead>
-        <tbody id="basic-body"></tbody>
-      </table>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-service">Service</th>
+              <th class="th-desc">Description</th>
+              <th class="th-price">Guide Price</th>
+            </tr>
+          </thead>
+          <tbody id="basic-body"></tbody>
+        </table>
+      </div>
     </section>
 
     <section>
       <h2 id="advanced-heading">Advanced Services</h2>
-      <table>
-        <thead>
-          <tr>
-            <th class="th-service">Service</th>
-            <th class="th-desc">Description</th>
-            <th class="th-price">Guide Price</th>
-          </tr>
-        </thead>
-        <tbody id="advanced-body"></tbody>
-      </table>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th class="th-service">Service</th>
+              <th class="th-desc">Description</th>
+              <th class="th-price">Guide Price</th>
+            </tr>
+          </thead>
+          <tbody id="advanced-body"></tbody>
+        </table>
+      </div>
     </section>
   </div>
 
   <script>
     const data = {
       en: {
-        pageTitle:      "Services",
-        back:           "← Back to Home",
-        basicHeading:   "Basic Services",
-        advancedHeading:"Advanced Services",
+        pageTitle:       "Services",
+        back:            "← Back to Home",
+        customServices:  "Custom services available on request.",
+        basicHeading:    "Basic Services",
+        advancedHeading: "Advanced Services",
         th: ["Service","Description","Guide Price"],
-        toggle:         "Toggle Light/Dark",
+        toggle:          "Toggle Light/Dark",
         basic: [
           { title:"Starter Site",   desc:"Responsive GitHub Pages site", price:"£499" },
           { title:"Payments",       desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
@@ -163,7 +183,7 @@
         ],
         advanced: [
           { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", price:"£49" },
-          { title:"SEO & Analytics Setup",           desc:"On‑page SEO, metadata, Google Analytics or Plausible dashboards.", price:"£149" },
+          { title:"SEO & Analytics Setup",           desc:"On‑page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.", price:"£149" },
           { title:"Content Management Training",     desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.", price:"£199" },
           { title:"Performance Optimisation",        desc:"Image compression, caching headers, Uptime Kuma monitoring.", price:"£149" },
           { title:"Branding & Logo Design",          desc:"Simple SVG logo, brand‑colours, favicon suite.", price:"£299" },
@@ -176,12 +196,13 @@
         ]
       },
       "zh-CN": {
-        pageTitle:      "服务",
-        back:           "← 返回首页",
-        basicHeading:   "基础服务",
-        advancedHeading:"高级服务",
+        pageTitle:       "服务",
+        back:            "← 返回首页",
+        customServices:  "可根据需求提供定制服务。",
+        basicHeading:    "基础服务",
+        advancedHeading: "高级服务",
         th: ["服务","描述","参考价格"],
-        toggle:         "切换明/暗模式",
+        toggle:          "切换明/暗模式",
         basic: [
           { title:"入门网站",   desc:"响应式 GitHub Pages 网站", price:"£499" },
           { title:"支付集成",   desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
@@ -189,7 +210,7 @@
         ],
         advanced: [
           { title:"自定义域名和 DNS 管理", desc:"获取并配置您自己的域名，使用 Let’s Encrypt 配置 SSL。", price:"£49" },
-          { title:"SEO 和分析设置",         desc:"页面 SEO、元数据、Google Analytics 或 Plausible 仪表板。", price:"£149" },
+          { title:"SEO 和分析设置",         desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。", price:"£149" },
           { title:"内容管理培训",           desc:"教授员工编辑 Markdown/Hugo/Jekyll 并通过 GitHub Actions 部署。", price:"£199" },
           { title:"性能优化",               desc:"图像压缩、缓存头设置、Uptime Kuma 监控。", price:"£149" },
           { title:"品牌和徽标设计",         desc:"简单的 SVG 徽标、品牌色和网站图标套件。", price:"£299" },
@@ -202,20 +223,21 @@
         ]
       },
       fil: {
-        pageTitle:      "Mga Serbisyo",
-        back:           "← Bumalik sa Home",
-        basicHeading:   "Pangunahing Serbisyo",
-        advancedHeading:"Mga Advanced na Serbisyo",
+        pageTitle:       "Mga Serbisyo",
+        back:            "← Bumalik sa Home",
+        customServices:  "Magagamit ang pasadyang serbisyo sa kahilingan.",
+        basicHeading:    "Pangunahing Serbisyo",
+        advancedHeading: "Mga Advanced na Serbisyo",
         th: ["Serbisyo","Paglalarawan","Patnubay na Presyo"],
-        toggle:         "I-toggle Light/Dark",
+        toggle:          "I-toggle Light/Dark",
         basic: [
-          { title:"Pangunahing Site", desc:"Responsive na GitHub Pages site", price:"£499" },
-          { title:"Bayad",            desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", price:"£199" },
-          { title:"Komunikasyon",     desc:"Rocket.Chat sa £5/buwan na VPS", price:"£149" }
+          { title:"Pangunahing Site",   desc:"Responsive na GitHub Pages site", price:"£499" },
+          { title:"Bayad",              desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", price:"£199" },
+          { title:"Komunikasyon",       desc:"Rocket.Chat sa £5/buwan na VPS", price:"£149" }
         ],
         advanced: [
           { title:"Pasadyang Domain at DNS Management", desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.", price:"£49" },
-          { title:"Pag-setup ng SEO & Analytics",       desc:"On‑page SEO, metadata, Google Analytics o Plausible dashboard.", price:"£149" },
+          { title:"Pag-setup ng SEO & Analytics",       desc:"On‑page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.", price:"£149" },
           { title:"Pagsasanay sa Content Mgmt",         desc:"Turuan ang staff gumawa ng Markdown/Hugo/Jekyll at mag-deploy gamit ang GitHub Actions.", price:"£199" },
           { title:"Performance Optimisation",           desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.", price:"£149" },
           { title:"Branding & Logo Design",             desc:"Simple SVG logo, brand na mga kulay, favicon suite.", price:"£299" },
@@ -231,16 +253,17 @@
 
     function render(lang) {
       const cfg = data[lang];
-      document.getElementById('page-title').innerText       = cfg.pageTitle;
-      document.getElementById('back').innerText             = cfg.back;
-      document.getElementById('basic-heading').innerText    = cfg.basicHeading;
-      document.getElementById('advanced-heading').innerText = cfg.advancedHeading;
-      document.querySelector('.toggle').innerText            = cfg.toggle;
+      document.getElementById('page-title').innerText        = cfg.pageTitle;
+      document.getElementById('back').innerText              = cfg.back;
+      document.getElementById('custom-services').innerText   = cfg.customServices;
+      document.getElementById('basic-heading').innerText     = cfg.basicHeading;
+      document.getElementById('advanced-heading').innerText  = cfg.advancedHeading;
+      document.querySelector('.toggle').innerText             = cfg.toggle;
 
       // headers
       document.querySelectorAll('.th-service').forEach(th=>th.innerText=cfg.th[0]);
-      document.querySelectorAll('.th-desc'   ).forEach(th=>th.innerText=cfg.th[1]);
-      document.querySelectorAll('.th-price'  ).forEach(th=>th.innerText=cfg.th[2]);
+      document.querySelectorAll('.th-desc').forEach(th=>th.innerText=cfg.th[1]);
+      document.querySelectorAll('.th-price').forEach(th=>th.innerText=cfg.th[2]);
 
       // populate tables
       document.getElementById('basic-body').innerHTML = cfg.basic
@@ -251,6 +274,7 @@
 
     document.getElementById('languageSelect')
       .addEventListener('change', e=>render(e.target.value));
+    // initial render
     render('en');
 
     function toggleTheme() {

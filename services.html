@@ -74,17 +74,23 @@
       border-collapse: collapse;
       margin-top: .5rem;
     }
+    /* green vertical and horizontal lines by default */
     th, td {
       padding: .75rem;
       text-align: left;
+      border-left: 1px solid var(--accent-green);
+      border-right: 1px solid var(--accent-green);
       border-bottom: 1px solid var(--accent-green);
     }
+    /* header background and text */
     th {
       background: var(--accent-green);
       color: #fff;
     }
-    /* only header vertical dividers, in black */
-    th + th { border-left: 1px solid #000; }
+    /* only the _inner_ header dividers (between THs) are black */
+    th + th {
+      border-left: 1px solid #000;
+    }
     @media(max-width:600px){
       header h1{font-size:1.5rem;}
       select,.toggle{font-size:.8rem;padding:.3rem .6rem;}
@@ -146,9 +152,9 @@
         th: ["Service","Description","Guide Price"],
         toggle:         "Toggle Light/Dark",
         basic: [
-          { title:"Starter Site",      desc:"Responsive GitHub Pages site", price:"£499" },
-          { title:"Payments",          desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
-          { title:"Communications",    desc:"Rocket.Chat on a £5/month VPS", price:"£149" }
+          { title:"Starter Site",    desc:"Responsive GitHub Pages site", price:"£499" },
+          { title:"Payments",        desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
+          { title:"Communications",  desc:"Rocket.Chat on a £5/month VPS", price:"£149" }
         ],
         advanced: [
           { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", price:"£49" },
@@ -172,9 +178,9 @@
         th: ["服务","描述","参考价格"],
         toggle:         "切换明/暗模式",
         basic: [
-          { title:"入门网站",      desc:"响应式 GitHub Pages 网站", price:"£499" },
-          { title:"支付集成",      desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
-          { title:"通讯",          desc:"Rocket.Chat 在每月 £5 VPS 上", price:"£149" }
+          { title:"入门网站",    desc:"响应式 GitHub Pages 网站", price:"£499" },
+          { title:"支付集成",    desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
+          { title:"通讯",        desc:"Rocket.Chat 在每月 £5 VPS 上", price:"£149" }
         ],
         advanced: [
           { title:"自定义域名和 DNS 管理", desc:"获取并配置您自己的域名，使用 Let’s Encrypt 配置 SSL。", price:"£49" },
@@ -198,9 +204,9 @@
         th: ["Serbisyo","Paglalarawan","Patnubay na Presyo"],
         toggle:         "I-toggle Light/Dark",
         basic: [
-          { title:"Pangunahing Site",   desc:"Responsive na GitHub Pages site", price:"£499" },
-          { title:"Bayad",              desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", price:"£199" },
-          { title:"Komunikasyon",       desc:"Rocket.Chat sa £5/buwan na VPS", price:"£149" }
+          { title:"Pangunahing Site", desc:"Responsive na GitHub Pages site", price:"£499" },
+          { title:"Bayad",            desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", price:"£199" },
+          { title:"Komunikasyon",     desc:"Rocket.Chat sa £5/buwan na VPS", price:"£149" }
         ],
         advanced: [
           { title:"Pasadyang Domain at DNS Management", desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.", price:"£49" },
@@ -213,7 +219,7 @@
           { title:"Backup & Disaster Recovery",         desc:"Awtomatikong snapshots ng site & VM, offsite sync.", price:"£199" },
           { title:"Security Hardening",                 desc:"Firewall rules, fail2ban, SSL auto-renewal.", price:"£199" },
           { title:"Chatbot / FAQ Bot",                  desc:"Botpress o open-source chatbot embedded sa static site.", price:"£299" },
-          { title:"CI/CD Pipelines",                    desc:"GitHub Actions: build, test, lint at auto-deploy on push.", price:"£149" }
+          { title:"CI/CD Pipelines",                    desc:"GitHub Actions: build, test, lint at auto-deploy sa push.", price:"£149" }
         ]
       }
     };
@@ -224,7 +230,7 @@
       document.getElementById('back').innerText             = cfg.back;
       document.getElementById('basic-heading').innerText    = cfg.basicHeading;
       document.getElementById('advanced-heading').innerText = cfg.advancedHeading;
-      document.querySelectorAll('.toggle')[0].innerText     = cfg.toggle;
+      document.querySelector('.toggle').innerText            = cfg.toggle;
 
       // headers
       document.querySelectorAll('.th-service').forEach(th=>th.innerText=cfg.th[0]);
@@ -232,10 +238,10 @@
       document.querySelectorAll('.th-price').forEach(th=>th.innerText=cfg.th[2]);
 
       // populate tables
-      const b = document.getElementById('basic-body');
-      b.innerHTML = cfg.basic.map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
-      const a = document.getElementById('advanced-body');
-      a.innerHTML = cfg.advanced.map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
+      document.getElementById('basic-body').innerHTML = cfg.basic
+        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
+      document.getElementById('advanced-body').innerHTML = cfg.advanced
+        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
     }
 
     document.getElementById('languageSelect').addEventListener('change', e=>render(e.target.value));
@@ -250,4 +256,3 @@
   </script>
 </body>
 </html>
-```

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digital Solutions Architect Service | HG9R</title>
+  <title>Digital Solutions Architect Service | HG9R</title>
   <style>
     :root {
       /* Light mode */
@@ -134,23 +134,13 @@
       <select id="languageSelect">
         <option value="en">English</option>
         <option value="zh-CN">普通话</option>
-        <option value="zh-YUE">粵語</option>
-        <option value="ru">Русский</option>
-        <option value="pl">Polski</option>
-        <option value="ja">日本語</option>
-        <option value="th">ไทย</option>
-        <option value="my">မြန်မာစာ</option>
-        <option value="ms">Bahasa Melayu</option>
-        <option value="id">Bahasa Indonesia</option>
         <option value="fil">Filipino</option>
-        <option value="vi">Tiếng Việt</option>
-        <option value="ko">한국어</option>
       </select>
       <button id="toggle" class="toggle" onclick="toggleTheme()">Toggle Light/Dark</button>
     </div>
 
     <header>
-      <h1 id="title">Digital Solutions Architect Service</h1>
+      <h1 id="title">Digital Solutions Architect Service</h1>
       <span id="tagline">from HG9R</span>
     </header>
 
@@ -167,13 +157,13 @@
           <p><strong>£499</strong></p>
         </div>
         <div class="slide">
-          <h3 id="slide2-title">Online Sales</h3>
-          <p id="slide2-desc">Stripe Checkout integration</p>
+          <h3 id="slide2-title">Payments</h3>
+          <p id="slide2-desc">Accept PayPal / Stripe / Crypto payments</p>
           <p><strong>£199</strong></p>
         </div>
         <div class="slide">
-          <h3 id="slide3-title">Digital HQ</h3>
-          <p id="slide3-desc">Mattermost & Nextcloud VM</p>
+          <h3 id="slide3-title">Communications</h3>
+          <p id="slide3-desc">Rocket.Chat on a £5/month VPS</p>
           <p><strong>£149</strong></p>
         </div>
       </div>
@@ -184,128 +174,38 @@
 
   <script>
     const translations = {
-      "en": {
-        title: "Digital Solutions Architect Service",
+      en: {
+        title: "Digital Solutions Architect Service",
         tagline: "from HG9R",
         description: "I help businesses establish or optimise their online presence with zero‑or‑low maintenance costs. We use free hosting (GitHub Pages), open‑source platforms, and lightweight VMs for internal or global communications.",
-        slide1: { title: "Starter Site", desc: "Responsive GitHub Pages site" },
-        slide2: { title: "Online Sales", desc: "Stripe Checkout integration" },
-        slide3: { title: "Digital HQ",    desc: "Mattermost & Nextcloud VM" },
-        toggle: "Toggle Light/Dark"
+        slide1: { title: "Starter Site",       desc: "Responsive GitHub Pages site" },
+        slide2: { title: "Payments",           desc: "Accept PayPal / Stripe / Crypto payments" },
+        slide3: { title: "Communications",     desc: "Rocket.Chat on a £5/month VPS" },
+        toggle:     "Toggle Light/Dark"
       },
       "zh-CN": {
         title: "数字解决方案架构服务",
         tagline: "来自 HG9R",
         description: "我帮助企业以零或低维护成本建立或优化其在线业务。我们使用免费托管（GitHub Pages）、开源平台和轻量级虚拟机进行内部或全球通信。",
-        slide1: { title: "初始网站",    desc: "响应式 GitHub Pages 网站" },
-        slide2: { title: "在线销售",    desc: "Stripe 结账 集成" },
-        slide3: { title: "数字总部",    desc: "Mattermost 和 Nextcloud 虚拟机" },
-        toggle: "切换明/暗模式"
+        slide1: { title: "入门网站",         desc: "响应式 GitHub Pages 网站" },
+        slide2: { title: "支付集成",         desc: "支持 PayPal / Stripe / 加密货币 支付" },
+        slide3: { title: "通讯",             desc: "Rocket.Chat 在每月 £5 VPS 上" },
+        toggle:     "切换明/暗模式"
       },
-      "zh-YUE": {
-        title: "數碼方案架構服務",
-        tagline: "由 HG9R 提供",
-        description: "我協助企業以零或低維護成本建立或優化其網上業務。我們使用免費託管（GitHub Pages）、開源平台及輕量級虛擬機作內部或全球通訊。",
-        slide1: { title: "入門網站",    desc: "響應式 GitHub Pages 網站" },
-        slide2: { title: "網上銷售",    desc: "Stripe 結賬 集成" },
-        slide3: { title: "數碼總部",    desc: "Mattermost 及 Nextcloud 虛擬機" },
-        toggle: "切換明/暗模式"
-      },
-      "ru": {
-        title: "Сервис цифрового архитектора решений",
-        tagline: "от HG9R",
-        description: "Я помогаю компаниям создавать или оптимизировать их онлайн-присутствие с нулевыми или низкими затратами на обслуживание. Мы используем бесплатный хостинг (GitHub Pages), открытые платформы и легковесные виртуальные машины для внутренней или глобальной коммуникации.",
-        slide1: { title: "Стартовый сайт", desc: "Адаптивный сайт на GitHub Pages" },
-        slide2: { title: "Онлайн-продажи", desc: "Интеграция Stripe Checkout" },
-        slide3: { title: "Цифровой HQ",    desc: "Виртуальная машина с Mattermost и Nextcloud" },
-        toggle: "Переключить свет/тёмный"
-      },
-      "pl": {
-        title: "Usługa Architekta Rozwiązań Cyfrowych",
-        tagline: "od HG9R",
-        description: "Pomagam firmom tworzyć lub optymalizować ich obecność online przy zerowych lub niskich kosztach utrzymania. Korzystamy z darmowego hostingu (GitHub Pages), otwartych platform i lekkich maszyn wirtualnych do komunikacji wewnętrznej lub globalnej.",
-        slide1: { title: "Strona Startowa", desc: "Responsywna strona GitHub Pages" },
-        slide2: { title: "Sprzedaż Online", desc: "Integracja Stripe Checkout" },
-        slide3: { title: "Cyfrowe HQ",      desc: "Mattermost i Nextcloud na VM" },
-        toggle: "Przełącz jasny/ciemny"
-      },
-      "ja": {
-        title: "デジタルソリューションアーキテクトサービス",
-        tagline: "提供：HG9R",
-        description: "私は企業が無料または低コストな運用でオンライン展開を構築・最適化するのを支援します。GitHub Pages 無料ホスティング、オープンソースプラットフォーム、軽量 VM を使用して、社内外のコミュニケーションを実現します。",
-        slide1: { title: "スターターサイト", desc: "レスポンシブ GitHub Pages サイト" },
-        slide2: { title: "オンライン販売",   desc: "Stripe Checkout 統合" },
-        slide3: { title: "デジタルHQ",       desc: "Mattermost & Nextcloud VM" },
-        toggle: "ライト/ダーク切替"
-      },
-      "th": {
-        title: "บริการสถาปนิกโซลูชันดิจิทัล",
-        tagline: "โดย HG9R",
-        description: "ฉันช่วยธุรกิจสร้างหรือปรับปรุงการมีตัวตนออนไลน์ด้วยต้นทุนบำรุงรักษาเป็นศูนย์หรือต่ำ เราใช้โฮสติ้งฟรี (GitHub Pages), แพลตฟอร์มโอเพนซอร์ส และ VM น้ำหนักเบาสำหรับการสื่อสารภายในหรือทั่วโลก",
-        slide1: { title: "ไซต์เริ่มต้น", desc: "ไซต์ GitHub Pages ตอบสนอง" },
-        slide2: { title: "การขายออนไลน์", desc: "การผสานรวม Stripe Checkout" },
-        slide3: { title: "สำนักงานใหญ่ดิจิทัล", desc: "VM Mattermost & Nextcloud" },
-        toggle: "สลับ สว่าง/มืด"
-      },
-      "my": {
-        title: "ဒစ်ဂျစ်တယ်ဖြေရှင်းချက်ဒီဇိုင်နာဝန်ဆောင်မှု",
-        tagline: "မှ HG9R",
-        description: "ကျွန်ုပ်သည်ကုမ္ပဏီများအား အွန်လိုင်းရှိမည့်အကျိုးရှိစေရန်သို့မဟုတ်၎င်းတို့၏အြောင့ာအတွေ့အကြုံကို စုစည်းထိန်းသိမ်းရမည့်ကုန်ကျစရိတ်တစ်သက်တည်း သို့မဟုတ်နည်းနည်းနည်းပြုစုပေးကူပါသည်။ GitHub Pages အခမဲ့ဟိုစတင်း၊ ဖွင့်လှစ်မည့်အတိုင်း အရင်းအမြစ်ကလပ်များနှင့် တစ်လက်လောက်သာကြီးမားသည့် VM များကို အသုံးပြုကာ ပြည်တွင်းသို့မဟုတ်ကမ္ဘာတစ်ဝှမ်း ဆက်သွယ်ညှိနှိုင်းမှုလုပ်ဆောင်ပါသည်။",
-        slide1: { title: "အစမိတ်ဆက်ဆိုဒ်", desc: "တုံ့ပြန်မှု GitHub Pages ဆိုဒ်" },
-        slide2: { title: "အွန်လိုင်းအရောင်း", desc: "Stripe Checkout ပေါင်းစပ်ခြင်း" },
-        slide3: { title: "ဒစ်ဂျစ်တယ်အထွေထွေအုပ်ချုပ်ရေး", desc: "Mattermost & Nextcloud VM" },
-        toggle: "မီး/မှိတ်ပြောင်းပါ"
-      },
-      "ms": {
-        title: "Perkhidmatan Arkitek Penyelesaian Digital",
-        tagline: "daripada HG9R",
-        description: "Saya membantu perniagaan membina atau mengoptimumkan kehadiran dalam talian mereka dengan kos penyelenggaraan sifar atau rendah. Kami menggunakan hosting percuma (GitHub Pages), platform sumber terbuka, dan VM ringan untuk komunikasi dalaman atau global.",
-        slide1: { title: "Laman Permulaan", desc: "Laman GitHub Pages responsif" },
-        slide2: { title: "Jualan Dalam Talian", desc: "Integrasi Stripe Checkout" },
-        slide3: { title: "Ibu Pejabat Digital", desc: "VM Mattermost & Nextcloud" },
-        toggle: "Tukar Terang/Gelap"
-      },
-      "id": {
-        title: "Layanan Arsitek Solusi Digital",
-        tagline: "dari HG9R",
-        description: "Saya membantu bisnis membangun atau mengoptimalkan kehadiran online mereka dengan biaya pemeliharaan nol atau rendah. Kami menggunakan hosting gratis (GitHub Pages), platform sumber terbuka, dan VM ringan untuk komunikasi internal atau global.",
-        slide1: { title: "Situs Pemula", desc: "Situs GitHub Pages responsif" },
-        slide2: { title: "Penjualan Online", desc: "Integrasi Stripe Checkout" },
-        slide3: { title: "Digital HQ", desc: "VM Mattermost & Nextcloud" },
-        toggle: "Beralih Terang/Gelap"
-      },
-      "fil": {
-        title: "Serbisyo ng Arkitektong Pang-Digital na Solusyon",
+      fil: {
+        title: "Serbisyo ng Arkitekto ng Solusyong Digital",
         tagline: "mula sa HG9R",
-        description: "Tinutulungan kong magtatag o mag-optimize ang mga negosyo ng kanilang online presence na may walang o mababang gastos sa maintenance. Ginagamit namin ang libreng hosting (GitHub Pages), open-source na plataporma, at magagaan na VM para sa internal o global na komunikasyon.",
-        slide1: { title: "Pangunahing Site", desc: "Responsive na GitHub Pages site" },
-        slide2: { title: "Online Sales", desc: "Stripe Checkout integration" },
-        slide3: { title: "Digital HQ", desc: "Mattermost & Nextcloud VM" },
-        toggle: "Palitan Liwanag/Madilim"
-      },
-      "vi": {
-        title: "Dịch vụ Kiến trúc sư Giải pháp Kỹ thuật số",
-        tagline: "từ HG9R",
-        description: "Tôi giúp các doanh nghiệp xây dựng hoặc tối ưu hóa sự hiện diện trực tuyến với chi phí bảo trì bằng không hoặc thấp. Chúng tôi sử dụng dịch vụ lưu trữ miễn phí (GitHub Pages), nền tảng mã nguồn mở và VM nhẹ cho liên lạc nội bộ hoặc toàn cầu.",
-        slide1: { title: "Trang Khởi đầu", desc: "Trang GitHub Pages đáp ứng" },
-        slide2: { title: "Bán hàng Trực tuyến", desc: "Tích hợp Stripe Checkout" },
-        slide3: { title: "Trụ sở Kỹ thuật số", desc: "Mattermost & Nextcloud VM" },
-        toggle: "Chuyển Sáng/Tối"
-      },
-      "ko": {
-        title: "디지털 솔루션 아키텍트 서비스",
-        tagline: "제공: HG9R",
-        description: "저는 기업들이 유지 비용 없이 또는 낮은 비용으로 온라인 존재감을 구축하거나 최적화할 수 있도록 돕습니다. GitHub Pages 무료 호스팅, 오픈 소스 플랫폼, 경량 VM을 사용하여 내부 또는 글로벌 커뮤니케이션을 지원합니다.",
-        slide1: { title: "시작 사이트", desc: "반응형 GitHub Pages 사이트" },
-        slide2: { title: "온라인 판매", desc: "Stripe Checkout 통합" },
-        slide3: { title: "디지털 HQ", desc: "Mattermost 및 Nextcloud VM" },
-        toggle: "라이트/다크 전환"
+        description: "Tinutulungan kong magtayo o mag-optimize ng online presence ng mga negosyo nang may zero o mababang gastos sa pagpapanatili. Ginagamit namin ang libreng hosting (GitHub Pages), open-source na platform, at magagaan na VM para sa internal o global na komunikasyon.",
+        slide1: { title: "Pangunahing Site",  desc: "Responsive na GitHub Pages site" },
+        slide2: { title: "Bayad",             desc: "Tumatanggap ng PayPal / Stripe / Crypto payments" },
+        slide3: { title: "Komunikasyon",      desc: "Rocket.Chat sa £5/buwan na VPS" },
+        toggle:     "I-toggle Light/Dark"
       }
     };
 
-    // swap text
-    function changeLanguage(lang) {
-      const t = translations[lang];
+    // Swap language text
+    document.getElementById('languageSelect').addEventListener('change', e => {
+      const t = translations[e.target.value];
       document.getElementById('title').innerText        = t.title;
       document.getElementById('tagline').innerText      = t.tagline;
       document.getElementById('desc').innerText         = t.description;
@@ -316,10 +216,6 @@
       document.getElementById('slide3-title').innerText = t.slide3.title;
       document.getElementById('slide3-desc').innerText  = t.slide3.desc;
       document.getElementById('toggle').innerText       = t.toggle;
-    }
-
-    document.getElementById('languageSelect').addEventListener('change', e => {
-      changeLanguage(e.target.value);
     });
 
     // Theme toggle

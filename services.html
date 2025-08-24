@@ -94,36 +94,32 @@
     section + section {
       margin-top: 2rem;
     }
-    .table-wrapper {
-      overflow-x: auto;
-      margin-top: 0.5rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid var(--accent-green);
-      padding: .75rem;
-      text-align: left;
-    }
-    th {
-      background: var(--accent-green);
-      color: #fff;
-    }
+    .table-wrapper { overflow-x: auto; margin-top: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid var(--accent-green); padding: .75rem; text-align: left; }
+    th { background: var(--accent-green); color: #fff; }
     [data-theme="dark"] th:not(:last-child) { border-right: 1px solid #000; }
     [data-theme="light"] th:not(:last-child) { border-right: 1px solid #fff; }
 
     /* Credits explainer */
-    .credits-explainer {
+    details.credits-explainer {
       border: 2px dashed var(--accent-green);
       border-radius: 6px;
-      padding: 1rem;
+      padding: 0.75rem 1rem;
       margin-bottom: 1rem;
     }
-    .credits-explainer h2 { color: var(--accent-blue); margin-bottom: .5rem; }
+    details.credits-explainer summary {
+      cursor: pointer;
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin: 0.25rem 0;
+      outline: none;
+      list-style: none;
+    }
+    details.credits-explainer[open] summary { margin-bottom: .5rem; }
     .credits-explainer ul { margin-left: 1.2rem; line-height: 1.6; }
     .credits-explainer li { margin: .2rem 0; }
+    .quote-note { margin-top: .5rem; font-style: italic; opacity: .9; }
 
     @media(max-width:600px) {
       header h1 { font-size:1.5rem; }
@@ -150,16 +146,13 @@
     <div id="custom-services" class="custom-note">Custom services available on request.</div>
 
     <!-- Credits Explainer -->
-    <section class="credits-explainer">
-      <h2 id="credits-title">About Service Credits</h2>
+    <details class="credits-explainer">
+      <summary id="credits-title">About Service Credits</summary>
       <ul id="credits-points">
-        <li>Each credit is £228 and equals 1.5 hours of consulting.</li>
-        <li>5 credits = 1 day (7.5 hours). Work delivered on weekends only.</li>
-        <li>Minimum purchase is 5 credits.</li>
-        <li>Minimum billable per task is 2.5 credits (half-day).</li>
-        <li>Credits expire 6 months after purchase.</li>
+        <!-- Populated by JS -->
       </ul>
-    </section>
+      <p id="quote-note" class="quote-note">Contact us for a quote.</p>
+    </details>
 
     <section>
       <h2 id="basic-heading">Basic Services</h2>
@@ -202,12 +195,13 @@
         customServices:  "Custom services available on request.",
         creditsTitle:    "About Service Credits",
         creditsPoints: [
-          "Each credit is £228 and equals 1.5 hours of consulting.",
+          "Each credit equals 1.5 hours of consulting.",
           "5 credits = 1 day (7.5 hours). Work delivered on weekends only.",
           "Minimum purchase is 5 credits.",
           "Minimum billable per task is 2.5 credits (half-day).",
           "Credits expire 6 months after purchase."
         ],
+        quoteNote:       "Contact us for a quote.",
         basicHeading:    "Basic Services",
         advancedHeading: "Advanced Services",
         th: ["Service","Description","Estimated Credits"],
@@ -237,12 +231,13 @@
         customServices:  "可根据需求提供定制服务。",
         creditsTitle:    "关于服务积分",
         creditsPoints: [
-          "每个积分 £228，等于 1.5 小时服务。",
+          "每个积分等于 1.5 小时服务。",
           "5 个积分 = 1 天（7.5 小时）。仅在周末交付服务。",
           "最低购买量为 5 个积分。",
           "单项任务的最低计费为 2.5 个积分（半天）。",
           "积分自购买起 6 个月后到期。"
         ],
+        quoteNote:       "请联系我们获取报价。",
         basicHeading:    "基础服务",
         advancedHeading: "高级服务",
         th: ["服务","描述","预计服务积分"],
@@ -272,12 +267,13 @@
         customServices:  "Magagamit ang pasadyang serbisyo sa kahilingan.",
         creditsTitle:    "Tungkol sa Service Credits",
         creditsPoints: [
-          "£228 bawat credit; katumbas ng 1.5 oras ng consulting.",
+          "Ang bawat credit ay katumbas ng 1.5 oras ng consulting.",
           "5 credits = 1 araw (7.5 oras). Nagtatrabaho lamang tuwing weekend.",
           "Minimum na pagbili: 5 credits.",
           "Minimum na sisingilin kada gawain: 2.5 credits (kalahating araw).",
           "Naglalaho ang credits pagkalipas ng 6 na buwan mula sa pagbili."
         ],
+        quoteNote:       "Makipag-ugnayan sa amin para sa quote.",
         basicHeading:    "Pangunahing Serbisyo",
         advancedHeading: "Mga Advanced na Serbisyo",
         th: ["Serbisyo","Paglalarawan","Tinatayang Kredito"],
@@ -321,6 +317,7 @@
       document.getElementById('credits-title').innerText = cfg.creditsTitle;
       const ul = document.getElementById('credits-points');
       ul.innerHTML = cfg.creditsPoints.map(x => `<li>${x}</li>`).join("");
+      document.getElementById('quote-note').innerText = cfg.quoteNote;
 
       // populate tables
       document.getElementById('basic-body').innerHTML = cfg.basic

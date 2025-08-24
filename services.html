@@ -229,12 +229,13 @@
         toggle: "Toggle Light/Dark",
         basic: [
           {
-            title:"Starter Site",
-            desc:"Responsive GitHub Pages site",
-            credits:"2.5–4",
+            title:"Communications",
+            desc:"Rocket.Chat on a £5/month VPS",
+            credits:"2.5–3.5",
             more:[
-              "A simple, clean website hosted on GitHub Pages with low maintenance.",
-              "Includes a lightweight theme, starter pages, and basic SEO-friendly structure."
+              "Rocket.Chat is a Slack-like, open-source team chat (channels, DMs, file sharing).",
+              "Other free/open-source alternatives: Mattermost, Zulip.",
+              "We provision a small cloud VM, secure it, and deploy the chat server."
             ]
           },
           {
@@ -247,80 +248,26 @@
             ]
           },
           {
-            title:"Communications",
-            desc:"Rocket.Chat on a £5/month VPS",
-            credits:"2.5–3.5",
+            title:"Starter Site",
+            desc:"Responsive GitHub Pages site",
+            credits:"2.5–4",
             more:[
-              "Rocket.Chat is a Slack-like, open-source team chat (channels, DMs, file sharing).",
-              "Other free/open-source alternatives: Mattermost, Zulip.",
-              "We provision a small cloud VM, secure it, and deploy the chat server."
+              "A simple, clean website hosted on GitHub Pages with low maintenance.",
+              "Includes a lightweight theme, starter pages, and basic SEO-friendly structure."
             ]
           }
         ],
         advanced: [
           {
-            title:"Custom Domain & DNS Management",
-            desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.",
-            credits:"2.5–3",
+            title:"Advanced Website (e-Commerce)",
+            desc:"Full online store setup (nopCommerce or Magento Open Source).",
+            credits:"8–15",
             more:[
-              "We purchase/configure your domain, set DNS records, and enable HTTPS.",
-              "Includes DNS guidance (A/AAAA/CNAME/TXT) and email sender basics if needed."
-            ]
-          },
-          {
-            title:"SEO & Analytics Setup",
-            desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.",
-            credits:"2.5–4",
-            more:[
-              "Add titles, descriptions, sitemap, robots directives, and basic schema.",
-              "Connect Google Analytics and submit your site to search consoles."
-            ]
-          },
-          {
-            title:"Content Management Training",
-            desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.",
-            credits:"2.5–3.5",
-            more:[
-              "We train you to update site pages in Markdown (no coding required).",
-              "Changes pushed to GitHub auto-build and auto-deploy the site.",
-              "Optional: simple editorial workflow (branches, approvals)."
-            ]
-          },
-          {
-            title:"Performance Optimisation",
-            desc:"Image compression, caching headers, Uptime Kuma monitoring.",
-            credits:"2.5–3",
-            more:[
-              "Caching headers: tell browsers what to cache and for how long to speed up repeat visits.",
-              "Uptime Kuma: self-hosted monitoring that pings your site and alerts if it’s down.",
-              "We’ll compress large images and tune static-site performance."
-            ]
-          },
-          {
-            title:"Branding & Logo Design",
-            desc:"Simple SVG logo, brand-colours, favicon suite.",
-            credits:"3–6",
-            more:[
-              "Create/refresh a minimalist logo and colour palette.",
-              "Deliver web assets: SVG/PNG logo, favicons, social preview."
-            ]
-          },
-          {
-            title:"Multi-Language Support",
-            desc:"Static-site internationalisation for your key markets.",
-            credits:"2.5–4",
-            more:[
-              "Set up language toggles and structure content per locale.",
-              "We’ll guide your translation workflow and avoid duplicated effort."
-            ]
-          },
-          {
-            title:"Email Newsletter Integration",
-            desc:"Mailchimp (free tier) or open-source Mautic setup.",
-            credits:"2.5–3.5",
-            more:[
-              "Add a signup form and connect it to Mailchimp or self-hosted Mautic.",
-              "You can send newsletters and manage subscriber lists from a dashboard."
+              "Design and configure a full e-commerce site: catalogue, cart, checkout, tax, shipping.",
+              "Platforms: nopCommerce (.NET) or Magento Open Source (PHP).",
+              "Includes payment gateways (Stripe/PayPal), shipping rules, basic theme customisation.",
+              "Hardening & hosting: provision and secure the environment; staging vs production as needed.",
+              "Optional: data migration, sample products, role permissions, and launch support."
             ]
           },
           {
@@ -330,16 +277,6 @@
             more:[
               "Schedule automatic backups; keep copies offsite.",
               "We document restore steps so you can recover quickly."
-            ]
-          },
-          {
-            title:"Security Hardening",
-            desc:"Firewall rules, fail2ban, SSL auto-renewal.",
-            credits:"2.5–3",
-            more:[
-              "Firewall: allow only required ports.",
-              "fail2ban: automatically bans IPs after repeated failed logins.",
-              "Ensure your TLS certificates renew automatically."
             ]
           },
           {
@@ -361,15 +298,52 @@
             ]
           },
           {
-            title:"Advanced Website (e-Commerce)",
-            desc:"Full online store setup (nopCommerce or Magento Open Source).",
-            credits:"8–15",
+            title:"Cloud Migration (On-Prem → Cloud)",
+            desc:"Assess and migrate workloads from on-premises servers to cloud platforms.",
+            credits:"8–12",
             more:[
-              "Design and configure a full e-commerce site: catalogue, cart, checkout, tax, shipping.",
-              "Platforms: nopCommerce (.NET) or Magento Open Source (PHP).",
-              "Includes payment gateways (Stripe/PayPal), shipping rules, basic theme customisation.",
-              "Hardening & hosting: provision and secure the environment; staging vs production as needed.",
-              "Optional: data migration, sample products, role permissions, and launch support."
+              "Assessment & Planning: inventory apps/services, dependencies, readiness.",
+              "Target Platforms: AWS, Azure, or Google Cloud per client preference.",
+              "Migration Types: lift-and-shift (VMs), replatform (managed DB/PaaS), or rebuild (containers).",
+              "Security & Networking: VPNs/peering, firewall/IAM, least-privilege access.",
+              "Backup & Rollback plan; optional containerisation for future-proofing."
+            ]
+          },
+          {
+            title:"Custom Domain & DNS Management",
+            desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.",
+            credits:"2.5–3",
+            more:[
+              "We purchase/configure your domain, set DNS records, and enable HTTPS.",
+              "Includes DNS guidance (A/AAAA/CNAME/TXT) and email sender basics if needed."
+            ]
+          },
+          {
+            title:"Email Newsletter Integration",
+            desc:"Mailchimp (free tier) or open-source Mautic setup.",
+            credits:"2.5–3.5",
+            more:[
+              "Add a signup form and connect it to Mailchimp or self-hosted Mautic.",
+              "You can send newsletters and manage subscriber lists from a dashboard."
+            ]
+          },
+          {
+            title:"Multi-Language Support",
+            desc:"Static-site internationalisation for your key markets.",
+            credits:"2.5–4",
+            more:[
+              "Set up language toggles and structure content per locale.",
+              "We’ll guide your translation workflow and avoid duplicated effort."
+            ]
+          },
+          {
+            title:"Performance Optimisation",
+            desc:"Image compression, caching headers, Uptime Kuma monitoring.",
+            credits:"2.5–3",
+            more:[
+              "Caching headers: tell browsers what to cache and for how long to speed up repeat visits.",
+              "Uptime Kuma: self-hosted monitoring that pings your site and alerts if it’s down.",
+              "We’ll compress large images and tune static-site performance."
             ]
           },
           {
@@ -380,6 +354,35 @@
               "Add/adjust extensions for payments, shipping, tax, search, or admin tools.",
               "Covers nopCommerce, Magento Open Source; lighter options like WooCommerce / PrestaShop on request.",
               "Includes version compatibility checks and rollback plan."
+            ]
+          },
+          {
+            title:"SEO & Analytics Setup",
+            desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.",
+            credits:"2.5–4",
+            more:[
+              "Add titles, descriptions, sitemap, robots directives, and basic schema.",
+              "Connect Google Analytics and submit your site to search consoles."
+            ]
+          },
+          {
+            title:"Security Hardening",
+            desc:"Firewall rules, fail2ban, SSL auto-renewal.",
+            credits:"2.5–3",
+            more:[
+              "Firewall: allow only required ports.",
+              "fail2ban: automatically bans IPs after repeated failed logins.",
+              "Ensure your TLS certificates renew automatically."
+            ]
+          },
+          {
+            title:"Content Management Training",
+            desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.",
+            credits:"2.5–3.5",
+            more:[
+              "We train you to update site pages in Markdown (no coding required).",
+              "Changes pushed to GitHub auto-build and auto-deploy the site.",
+              "Optional: simple editorial workflow (branches, approvals)."
             ]
           }
         ]
@@ -434,87 +437,12 @@
         ],
         advanced: [
           {
-            title:"自定义域名和 DNS 管理",
-            desc:"获取并配置您的域名，使用 Let’s Encrypt 配置 SSL。",
-            credits:"2.5–3",
-            more:[
-              "购买/配置域名，设置 DNS 记录并启用 HTTPS。",
-              "可提供 DNS 指南（A/AAAA/CNAME/TXT）及发信基础配置。"
-            ]
-          },
-          {
-            title:"SEO 和分析设置",
-            desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。",
-            credits:"2.5–4",
-            more:[
-              "添加标题、描述、站点地图、robots 与基础 schema。",
-              "接入 GA 并向搜索平台提交站点。"
-            ]
-          },
-          {
-            title:"内容管理培训",
-            desc:"教授员工编辑 Markdown/Hugo/Jekyll，并通过 GitHub Actions 部署。",
-            credits:"2.5–3.5",
-            more:[
-              "培训如何用 Markdown 更新网页内容（无需编程）。",
-              "推送到 GitHub 后自动构建与部署。",
-              "可选：简单编辑流程（分支、审批）。"
-            ]
-          },
-          {
-            title:"性能优化",
-            desc:"图像压缩、缓存头设置、Uptime Kuma 监控。",
-            credits:"2.5–3",
-            more:[
-              "缓存头：告知浏览器缓存策略，加快二次访问。",
-              "Uptime Kuma：自建站点可用性监控，宕机即时告警。",
-              "压缩大图并优化静态站性能。"
-            ]
-          },
-          {
-            title:"品牌与徽标设计",
-            desc:"简洁 SVG 徽标、品牌色与网站图标套件。",
-            credits:"3–6",
-            more:[
-              "设计/更新极简徽标与配色方案。",
-              "交付 SVG/PNG 徽标、网站图标与社交分享图。"
-            ]
-          },
-          {
-            title:"多语言支持",
-            desc:"为主要市场的静态站点提供国际化。",
-            credits:"2.5–4",
-            more:[
-              "建立语言切换与多语言内容结构。",
-              "提供翻译流程建议，避免重复劳动。"
-            ]
-          },
-          {
-            title:"电子邮件通讯集成",
-            desc:"Mailchimp（免费版）或开源 Mautic 设置。",
-            credits:"2.5–3.5",
-            more:[
-              "添加订阅表单并连接 Mailchimp 或自建 Mautic。",
-              "在仪表板管理订阅者与发送简报。"
-            ]
-          },
-          {
             title:"备份与灾难恢复",
             desc:"网站与虚拟机的自动快照，异地同步。",
             credits:"2.5–4",
             more:[
               "定期自动备份，并将副本异地保存。",
               "提供恢复步骤文档，快速回滚。"
-            ]
-          },
-          {
-            title:"安全加固",
-            desc:"防火墙规则、fail2ban、SSL 自动续期。",
-            credits:"2.5–3",
-            more:[
-              "防火墙：仅放行必要端口。",
-              "fail2ban：连续登录失败将自动封禁 IP。",
-              "确保证书自动续期，HTTPS 始终有效。"
             ]
           },
           {
@@ -536,14 +464,52 @@
             ]
           },
           {
-            title:"高级网站（电商）",
-            desc:"搭建完整网店（nopCommerce 或 Magento 开源版）。",
-            credits:"8–15",
+            title:"云迁移（本地 → 云端）",
+            desc:"评估并将本地服务器工作负载迁移至云平台。",
+            credits:"8–12",
             more:[
-              "配置商品目录、购物车、结账、税费与配送规则。",
-              "平台：nopCommerce（.NET）或 Magento 开源版（PHP）。",
-              "含支付网关、基础主题定制与环境加固/分环境部署。",
-              "可选：数据迁移、示例商品、角色权限与发布支持。"
+              "评估与规划：盘点应用/服务、依赖与就绪度。",
+              "目标平台：AWS、Azure 或 Google Cloud（按客户偏好）。",
+              "迁移类型：平移（VM）、再平台化（托管数据库/平台服务）、重构（容器化）。",
+              "安全与网络：VPN/互联、访问控制、防火墙与最小权限。",
+              "备份与回滚计划；可选容器化以便后续扩展。"
+            ]
+          },
+          {
+            title:"自定义域名和 DNS 管理",
+            desc:"获取并配置您的域名，使用 Let’s Encrypt 配置 SSL。",
+            credits:"2.5–3",
+            more:[
+              "购买/配置域名，设置 DNS 记录并启用 HTTPS。",
+              "可提供 DNS 指南（A/AAAA/CNAME/TXT）及发信基础配置。"
+            ]
+          },
+          {
+            title:"电子邮件通讯集成",
+            desc:"Mailchimp（免费版）或开源 Mautic 设置。",
+            credits:"2.5–3.5",
+            more:[
+              "添加订阅表单并连接 Mailchimp 或自建 Mautic。",
+              "在仪表板管理订阅者与发送简报。"
+            ]
+          },
+          {
+            title:"多语言支持",
+            desc:"为主要市场的静态站点提供国际化。",
+            credits:"2.5–4",
+            more:[
+              "建立语言切换与多语言内容结构。",
+              "提供翻译流程建议，避免重复劳动。"
+            ]
+          },
+          {
+            title:"性能优化",
+            desc:"图像压缩、缓存头设置、Uptime Kuma 监控。",
+            credits:"2.5–3",
+            more:[
+              "缓存头：告知浏览器缓存策略，加快二次访问。",
+              "Uptime Kuma：自建站点可用性监控，宕机即时告警。",
+              "压缩大图并优化静态站性能。"
             ]
           },
           {
@@ -554,6 +520,46 @@
               "扩展支付、配送、税务、搜索或管理功能。",
               "支持 nopCommerce、Magento；也可选 WooCommerce / PrestaShop。",
               "包含版本兼容性检查与回滚方案。"
+            ]
+          },
+          {
+            title:"SEO 和分析设置",
+            desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。",
+            credits:"2.5–4",
+            more:[
+              "添加标题、描述、站点地图、robots 与基础 schema。",
+              "接入 GA 并向搜索平台提交站点。"
+            ]
+          },
+          {
+            title:"安全加固",
+            desc:"防火墙规则、fail2ban、SSL 自动续期。",
+            credits:"2.5–3",
+            more:[
+              "防火墙：仅放行必要端口。",
+              "fail2ban：连续登录失败将自动封禁 IP。",
+              "确保证书自动续期，HTTPS 始终有效。"
+            ]
+          },
+          {
+            title:"内容管理培训",
+            desc:"教授员工编辑 Markdown/Hugo/Jekyll，并通过 GitHub Actions 部署。",
+            credits:"2.5–3.5",
+            more:[
+              "培训如何用 Markdown 更新网页内容（无需编程）。",
+              "推送到 GitHub 后自动构建与部署。",
+              "可选：简单编辑流程（分支、审批）。"
+            ]
+          },
+          {
+            title:"高级网站（电商）",
+            desc:"搭建完整网店（nopCommerce 或 Magento 开源版）。",
+            credits:"8–15",
+            more:[
+              "配置商品目录、购物车、结账、税费与配送规则。",
+              "平台：nopCommerce（.NET）或 Magento 开源版（PHP）。",
+              "含支付网关、基础主题定制与环境加固/分环境部署。",
+              "可选：数据迁移、示例商品、角色权限与发布支持。"
             ]
           }
         ]
@@ -578,12 +584,13 @@
         toggle: "I-toggle Light/Dark",
         basic: [
           {
-            title:"Pangunahing Site",
-            desc:"Responsive na GitHub Pages site",
-            credits:"2.5–4",
+            title:"Komunikasyon",
+            desc:"Rocket.Chat sa £5/buwan na VPS",
+            credits:"2.5–3.5",
             more:[
-              "Malinis at magaan na site na naka-host sa GitHub Pages, mababa ang maintenance.",
-              "May kasamang tema, panimulang mga pahina, at basic SEO structure."
+              "Ang Rocket.Chat ay parang Slack na open-source team chat (channels, DM, files).",
+              "Iba pang libre/open-source: Mattermost, Zulip.",
+              "Magpo-provision kami ng cloud VM, ise-secure at i-de-deploy ang chat."
             ]
           },
           {
@@ -596,80 +603,25 @@
             ]
           },
           {
-            title:"Komunikasyon",
-            desc:"Rocket.Chat sa £5/buwan na VPS",
-            credits:"2.5–3.5",
+            title:"Pangunahing Site",
+            desc:"Responsive na GitHub Pages site",
+            credits:"2.5–4",
             more:[
-              "Ang Rocket.Chat ay parang Slack na open-source team chat (channels, DM, files).",
-              "Iba pang libre/open-source: Mattermost, Zulip.",
-              "Magpo-provision kami ng cloud VM, ise-secure at i-de-deploy ang chat."
+              "Malinis at magaan na site na naka-host sa GitHub Pages, mababa ang maintenance.",
+              "May kasamang tema, panimulang mga pahina, at basic SEO structure."
             ]
           }
         ],
         advanced: [
           {
-            title:"Pasadyang Domain at DNS Management",
-            desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.",
-            credits:"2.5–3",
+            title:"Advanced Website (e-Commerce)",
+            desc:"Buong online store (nopCommerce o Magento Open Source).",
+            credits:"8–15",
             more:[
-              "Bibili/ike-configure ang domain, ise-set ang DNS at io-on ang HTTPS.",
-              "Gabay sa DNS (A/AAAA/CNAME/TXT) at basic email sender kung kailangan."
-            ]
-          },
-          {
-            title:"Pag-setup ng SEO & Analytics",
-            desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, na may dashboards.",
-            credits:"2.5–4",
-            more:[
-              "Magdagdag ng titles, descriptions, sitemap, robots at basic schema.",
-              "Ikonekta ang GA at isumite ang site sa search consoles."
-            ]
-          },
-          {
-            title:"Pagsasanay sa Content Mgmt",
-            desc:"Turuan ang staff mag-edit ng Markdown/Hugo/Jekyll at mag-deploy via GitHub Actions.",
-            credits:"2.5–3.5",
-            more:[
-              "Turuan kung paano mag-update ng content sa Markdown (walang coding).",
-              "Pagka-push sa GitHub, auto-build at auto-deploy na ang site.",
-              "Opsyonal: simple workflow (branches, approvals)."
-            ]
-          },
-          {
-            title:"Performance Optimisation",
-            desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.",
-            credits:"2.5–3",
-            more:[
-              "Caching headers: sabihin sa browser kung ano at gaano katagal i-cache.",
-              "Uptime Kuma: self-hosted monitoring at alert kapag down ang site.",
-              "Iko-compress ang malalaking larawan at i-tune ang performance."
-            ]
-          },
-          {
-            title:"Branding & Logo Design",
-            desc:"Simpleng SVG logo, brand na mga kulay, favicon suite.",
-            credits:"3–6",
-            more:[
-              "Gumawa/refresh ng minimalist na logo at palette.",
-              "Ihatid ang web assets: SVG/PNG, favicons, social preview."
-            ]
-          },
-          {
-            title:"Multi-Language Support",
-            desc:"Internationalization ng static site para sa pangunahing merkado.",
-            credits:"2.5–4",
-            more:[
-              "Magtakda ng language switch at istraktura ng content kada wika.",
-              "Gabay sa translation workflow para hindi doble trabaho."
-            ]
-          },
-          {
-            title:"Email Newsletter Integration",
-            desc:"Mailchimp (libreng tier) o open-source Mautic setup.",
-            credits:"2.5–3.5",
-            more:[
-              "Magdagdag ng signup form at ikonekta sa Mailchimp o self-hosted Mautic.",
-              "Magpadala ng newsletters at i-manage ang subscribers sa dashboard."
+              "I-setup ang katalogo, cart, checkout, buwis at shipping rules.",
+              "Mga platform: nopCommerce (.NET) o Magento Open Source (PHP).",
+              "Kasama ang payment gateways, basic theme, hardening at hosting setup.",
+              "Opsyonal: data migration, sample products, roles at launch support."
             ]
           },
           {
@@ -679,16 +631,6 @@
             more:[
               "I-schedule ang backups at mag-keep ng kopya offsite.",
               "Dokumentadong steps para mabilis na makapag-recover."
-            ]
-          },
-          {
-            title:"Security Hardening",
-            desc:"Firewall rules, fail2ban, SSL auto-renewal.",
-            credits:"2.5–3",
-            more:[
-              "Firewall: payagan lang ang kailangang ports.",
-              "fail2ban: auto-ban ng IP matapos sunod-sunod na failed logins.",
-              "Siguraduhing auto-renew ang TLS certificates."
             ]
           },
           {
@@ -710,14 +652,52 @@
             ]
           },
           {
-            title:"Advanced Website (e-Commerce)",
-            desc:"Buong online store (nopCommerce o Magento Open Source).",
-            credits:"8–15",
+            title:"Cloud Migration (On-Prem → Cloud)",
+            desc:"Suriin at ilipat ang workloads mula on-prem papuntang cloud.",
+            credits:"8–12",
             more:[
-              "I-setup ang katalogo, cart, checkout, buwis at shipping rules.",
-              "Mga platform: nopCommerce (.NET) o Magento Open Source (PHP).",
-              "Kasama ang payment gateways, basic theme, hardening at hosting setup.",
-              "Opsyonal: data migration, sample products, roles at launch support."
+              "Pagsusuri at Plano: inventory ng apps/services, dependencies, readiness.",
+              "Target Platforms: AWS, Azure, o Google Cloud depende sa kliyente.",
+              "Uri ng Migration: lift-and-shift (VM), replatform (managed DB/PaaS), o rebuild (containers).",
+              "Seguridad at Networking: VPN/peering, firewall/IAM, least-privilege.",
+              "Backup at rollback plan; opsyonal na containerisation."
+            ]
+          },
+          {
+            title:"Pasadyang Domain at DNS Management",
+            desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.",
+            credits:"2.5–3",
+            more:[
+              "Bibili/ike-configure ang domain, ise-set ang DNS at io-on ang HTTPS.",
+              "Gabay sa DNS (A/AAAA/CNAME/TXT) at basic email sender kung kailangan."
+            ]
+          },
+          {
+            title:"Email Newsletter Integration",
+            desc:"Mailchimp (libreng tier) o open-source Mautic setup.",
+            credits:"2.5–3.5",
+            more:[
+              "Magdagdag ng signup form at ikonekta sa Mailchimp o self-hosted Mautic.",
+              "Magpadala ng newsletters at i-manage ang subscribers sa dashboard."
+            ]
+          },
+          {
+            title:"Multi-Language Support",
+            desc:"Internationalization ng static site para sa pangunahing merkado.",
+            credits:"2.5–4",
+            more:[
+              "Magtakda ng language switch at istraktura ng content kada wika.",
+              "Gabay sa translation workflow para hindi doble trabaho."
+            ]
+          },
+          {
+            title:"Performance Optimisation",
+            desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.",
+            credits:"2.5–3",
+            more:[
+              "Caching headers: sabihin sa browser kung ano at gaano katagal i-cache.",
+              "Uptime Kuma: self-hosted monitoring at alert kapag down ang site.",
+              "Iko-compress ang malalaking larawan at i-tune ang performance."
             ]
           },
           {
@@ -729,12 +709,41 @@
               "Saklaw ang nopCommerce, Magento; maaari rin ang WooCommerce / PrestaShop.",
               "Kasama ang version compatibility checks at rollback plan."
             ]
+          },
+          {
+            title:"Pag-setup ng SEO & Analytics",
+            desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, na may dashboards.",
+            credits:"2.5–4",
+            more:[
+              "Magdagdag ng titles, descriptions, sitemap, robots at basic schema.",
+              "Ikonekta ang GA at isumite ang site sa search consoles."
+            ]
+          },
+          {
+            title:"Security Hardening",
+            desc:"Firewall rules, fail2ban, SSL auto-renewal.",
+            credits:"2.5–3",
+            more:[
+              "Firewall: payagan lang ang kailangang ports.",
+              "fail2ban: auto-ban ng IP matapos sunod-sunod na failed logins.",
+              "Siguraduhing auto-renew ang TLS certificates."
+            ]
+          },
+          {
+            title:"Pagsasanay sa Content Mgmt",
+            desc:"Turuan ang staff mag-edit ng Markdown/Hugo/Jekyll at mag-deploy via GitHub Actions.",
+            credits:"2.5–3.5",
+            more:[
+              "Turuan kung paano mag-update ng content sa Markdown (walang coding).",
+              "Pagka-push sa GitHub, auto-build at auto-deploy na ang site.",
+              "Opsyonal: simple workflow (branches, approvals)."
+            ]
           }
         ]
       }
     };
 
-    // Render function builds tables and details rows; rows are clickable to toggle their details
+    // Build rows (sorted by title using locale-aware collator)
     function render(lang) {
       const cfg = data[lang] || data.en;
       document.getElementById('page-title').innerText = cfg.pageTitle;
@@ -755,9 +764,12 @@
       const ul = document.getElementById('credits-points');
       ul.innerHTML = cfg.creditsPoints.map(x => `<li>${x}</li>`).join("");
 
-      // Populate tables with expandable rows
+      // Locale-aware sort
+      const collator = new Intl.Collator(lang);
+
       const makeRows = (list) => {
-        return list.map((r) => {
+        const sorted = [...list].sort((a,b) => collator.compare(a.title, b.title));
+        return sorted.map((r) => {
           const rowId = `row-${Math.random().toString(36).slice(2,9)}`;
           const main =
             `<tr class="service-row" tabindex="0" aria-expanded="false" data-target="${rowId}">

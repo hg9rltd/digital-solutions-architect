@@ -102,24 +102,29 @@
       width: 100%;
       border-collapse: collapse;
     }
-    /* Default all borders green */
     th, td {
       border: 1px solid var(--accent-green);
       padding: .75rem;
       text-align: left;
     }
-    /* Header background */
     th {
       background: var(--accent-green);
       color: #fff;
     }
-    /* Theme‑aware inner header dividers */
-    [data-theme="dark"] th:not(:last-child) {
-      border-right: 1px solid #000;
+    [data-theme="dark"] th:not(:last-child) { border-right: 1px solid #000; }
+    [data-theme="light"] th:not(:last-child) { border-right: 1px solid #fff; }
+
+    /* Credits explainer */
+    .credits-explainer {
+      border: 2px dashed var(--accent-green);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 1rem;
     }
-    [data-theme="light"] th:not(:last-child) {
-      border-right: 1px solid #fff;
-    }
+    .credits-explainer h2 { color: var(--accent-blue); margin-bottom: .5rem; }
+    .credits-explainer ul { margin-left: 1.2rem; line-height: 1.6; }
+    .credits-explainer li { margin: .2rem 0; }
+
     @media(max-width:600px) {
       header h1 { font-size:1.5rem; }
       select, .toggle { font-size:.8rem; padding:.3rem .6rem; }
@@ -144,6 +149,18 @@
 
     <div id="custom-services" class="custom-note">Custom services available on request.</div>
 
+    <!-- Credits Explainer -->
+    <section class="credits-explainer">
+      <h2 id="credits-title">About Service Credits</h2>
+      <ul id="credits-points">
+        <li>Each credit is £228 and equals 1.5 hours of consulting.</li>
+        <li>5 credits = 1 day (7.5 hours). Work delivered on weekends only.</li>
+        <li>Minimum purchase is 5 credits.</li>
+        <li>Minimum billable per task is 2.5 credits (half-day).</li>
+        <li>Credits expire 6 months after purchase.</li>
+      </ul>
+    </section>
+
     <section>
       <h2 id="basic-heading">Basic Services</h2>
       <div class="table-wrapper">
@@ -152,7 +169,7 @@
             <tr>
               <th class="th-service">Service</th>
               <th class="th-desc">Description</th>
-              <th class="th-price">Guide Price</th>
+              <th class="th-credits">Estimated Credits</th>
             </tr>
           </thead>
           <tbody id="basic-body"></tbody>
@@ -168,7 +185,7 @@
             <tr>
               <th class="th-service">Service</th>
               <th class="th-desc">Description</th>
-              <th class="th-price">Guide Price</th>
+              <th class="th-credits">Estimated Credits</th>
             </tr>
           </thead>
           <tbody id="advanced-body"></tbody>
@@ -183,81 +200,105 @@
         pageTitle:       "Services",
         back:            "← Back to Home",
         customServices:  "Custom services available on request.",
+        creditsTitle:    "About Service Credits",
+        creditsPoints: [
+          "Each credit is £228 and equals 1.5 hours of consulting.",
+          "5 credits = 1 day (7.5 hours). Work delivered on weekends only.",
+          "Minimum purchase is 5 credits.",
+          "Minimum billable per task is 2.5 credits (half-day).",
+          "Credits expire 6 months after purchase."
+        ],
         basicHeading:    "Basic Services",
         advancedHeading: "Advanced Services",
-        th: ["Service","Description","Guide Price"],
+        th: ["Service","Description","Estimated Credits"],
         toggle:          "Toggle Light/Dark",
         basic: [
-          { title:"Starter Site",   desc:"Responsive GitHub Pages site", price:"£499" },
-          { title:"Payments",       desc:"Accept PayPal / Stripe / Crypto payments", price:"£199" },
-          { title:"Communications", desc:"Rocket.Chat on a £5/month VPS", price:"£149" }
+          { title:"Starter Site",   desc:"Responsive GitHub Pages site", credits:"2.5–4" },
+          { title:"Payments",       desc:"Accept PayPal / Stripe / Crypto payments", credits:"2.5–3" },
+          { title:"Communications", desc:"Rocket.Chat on a £5/month VPS", credits:"2.5–3.5" }
         ],
         advanced: [
-          { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", price:"£49" },
-          { title:"SEO & Analytics Setup",           desc:"On‑page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.", price:"£149" },
-          { title:"Content Management Training",     desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.", price:"£199" },
-          { title:"Performance Optimisation",        desc:"Image compression, caching headers, Uptime Kuma monitoring.", price:"£149" },
-          { title:"Branding & Logo Design",          desc:"Simple SVG logo, brand‑colours, favicon suite.", price:"£299" },
-          { title:"Multi‑Language Support",          desc:"Static‑site internationalisation for your key markets.", price:"£199" },
-          { title:"Email Newsletter Integration",    desc:"Mailchimp (free tier) or open‑source Mautic setup.", price:"£249" },
-          { title:"Backup & Disaster Recovery",      desc:"Automated snapshots of sites & VMs, offsite sync.", price:"£199" },
-          { title:"Security Hardening",              desc:"Firewall rules, fail2ban, SSL auto‑renewal.", price:"£199" },
-          { title:"Chatbot / FAQ Bot",               desc:"Botpress or open‑source chatbot embedded in static site.", price:"£299" },
-          { title:"CI/CD Pipelines",                 desc:"GitHub Actions: build, test, lint and auto‑deploy on push.", price:"£149" }
+          { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", credits:"2.5–3" },
+          { title:"SEO & Analytics Setup",           desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.", credits:"2.5–4" },
+          { title:"Content Management Training",     desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.", credits:"2.5–3.5" },
+          { title:"Performance Optimisation",        desc:"Image compression, caching headers, Uptime Kuma monitoring.", credits:"2.5–3" },
+          { title:"Branding & Logo Design",          desc:"Simple SVG logo, brand-colours, favicon suite.", credits:"3–6" },
+          { title:"Multi-Language Support",          desc:"Static-site internationalisation for your key markets.", credits:"2.5–4" },
+          { title:"Email Newsletter Integration",    desc:"Mailchimp (free tier) or open-source Mautic setup.", credits:"2.5–3.5" },
+          { title:"Backup & Disaster Recovery",      desc:"Automated snapshots of sites & VMs, offsite sync.", credits:"2.5–4" },
+          { title:"Security Hardening",              desc:"Firewall rules, fail2ban, SSL auto-renewal.", credits:"2.5–3" },
+          { title:"Chatbot / FAQ Bot",               desc:"Botpress or open-source chatbot embedded in static site.", credits:"3–6" },
+          { title:"CI/CD Pipelines",                 desc:"GitHub Actions: build, test, lint and auto-deploy on push.", credits:"2.5–3" }
         ]
       },
       "zh-CN": {
         pageTitle:       "服务",
         back:            "← 返回首页",
         customServices:  "可根据需求提供定制服务。",
+        creditsTitle:    "关于服务积分",
+        creditsPoints: [
+          "每个积分 £228，等于 1.5 小时服务。",
+          "5 个积分 = 1 天（7.5 小时）。仅在周末交付服务。",
+          "最低购买量为 5 个积分。",
+          "单项任务的最低计费为 2.5 个积分（半天）。",
+          "积分自购买起 6 个月后到期。"
+        ],
         basicHeading:    "基础服务",
         advancedHeading: "高级服务",
-        th: ["服务","描述","参考价格"],
+        th: ["服务","描述","预计服务积分"],
         toggle:          "切换明/暗模式",
         basic: [
-          { title:"入门网站",   desc:"响应式 GitHub Pages 网站", price:"£499" },
-          { title:"支付集成",   desc:"支持 PayPal / Stripe / 加密货币 支付", price:"£199" },
-          { title:"通讯",       desc:"Rocket.Chat 在每月 £5 VPS 上", price:"£149" }
+          { title:"入门网站",   desc:"响应式 GitHub Pages 网站", credits:"2.5–4" },
+          { title:"支付集成",   desc:"支持 PayPal / Stripe / 加密货币 支付", credits:"2.5–3" },
+          { title:"通讯",       desc:"在每月 £5 的 VPS 上部署 Rocket.Chat", credits:"2.5–3.5" }
         ],
         advanced: [
-          { title:"自定义域名和 DNS 管理", desc:"获取并配置您自己的域名，使用 Let’s Encrypt 配置 SSL。", price:"£49" },
-          { title:"SEO 和分析设置",         desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。", price:"£149" },
-          { title:"内容管理培训",           desc:"教授员工编辑 Markdown/Hugo/Jekyll 并通过 GitHub Actions 部署。", price:"£199" },
-          { title:"性能优化",               desc:"图像压缩、缓存头设置、Uptime Kuma 监控。", price:"£149" },
-          { title:"品牌和徽标设计",         desc:"简单的 SVG 徽标、品牌色和网站图标套件。", price:"£299" },
-          { title:"多语言支持",             desc:"为主要市场的静态站点提供国际化。", price:"£199" },
-          { title:"电子邮件通讯集成",       desc:"Mailchimp（免费版）或开源 Mautic 设置。", price:"£249" },
-          { title:"备份和灾难恢复",         desc:"自动快照网站和虚拟机，并进行异地同步。", price:"£199" },
-          { title:"安全加固",               desc:"防火墙规则、服务器 fail2ban 和 SSL 自动续期。", price:"£199" },
-          { title:"聊天机器人/常见问题机器人", desc:"在静态站点中嵌入 Botpress 或开源聊天机器人。", price:"£299" },
-          { title:"CI/CD 管道",            desc:"使用 GitHub Actions：构建、测试、Lint 并自动部署。", price:"£149" }
+          { title:"自定义域名和 DNS 管理", desc:"获取并配置您的域名，使用 Let’s Encrypt 配置 SSL。", credits:"2.5–3" },
+          { title:"SEO 和分析设置",         desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。", credits:"2.5–4" },
+          { title:"内容管理培训",           desc:"教授员工编辑 Markdown/Hugo/Jekyll，并通过 GitHub Actions 部署。", credits:"2.5–3.5" },
+          { title:"性能优化",               desc:"图像压缩、缓存头设置、Uptime Kuma 监控。", credits:"2.5–3" },
+          { title:"品牌和徽标设计",         desc:"简单的 SVG 徽标、品牌色和网站图标套件。", credits:"3–6" },
+          { title:"多语言支持",             desc:"为主要市场的静态站点提供国际化。", credits:"2.5–4" },
+          { title:"电子邮件通讯集成",       desc:"Mailchimp（免费版）或开源 Mautic 设置。", credits:"2.5–3.5" },
+          { title:"备份和灾难恢复",         desc:"网站与虚拟机的自动快照，异地同步。", credits:"2.5–4" },
+          { title:"安全加固",               desc:"防火墙规则、fail2ban、SSL 自动续期。", credits:"2.5–3" },
+          { title:"聊天机器人/常见问题机器人", desc:"在静态站点中嵌入 Botpress 或其他开源聊天机器人。", credits:"3–6" },
+          { title:"CI/CD 管道",            desc:"使用 GitHub Actions 实现构建、测试、Lint 与自动部署。", credits:"2.5–3" }
         ]
       },
       fil: {
         pageTitle:       "Mga Serbisyo",
         back:            "← Bumalik sa Home",
         customServices:  "Magagamit ang pasadyang serbisyo sa kahilingan.",
+        creditsTitle:    "Tungkol sa Service Credits",
+        creditsPoints: [
+          "£228 bawat credit; katumbas ng 1.5 oras ng consulting.",
+          "5 credits = 1 araw (7.5 oras). Nagtatrabaho lamang tuwing weekend.",
+          "Minimum na pagbili: 5 credits.",
+          "Minimum na sisingilin kada gawain: 2.5 credits (kalahating araw).",
+          "Naglalaho ang credits pagkalipas ng 6 na buwan mula sa pagbili."
+        ],
         basicHeading:    "Pangunahing Serbisyo",
         advancedHeading: "Mga Advanced na Serbisyo",
-        th: ["Serbisyo","Paglalarawan","Patnubay na Presyo"],
+        th: ["Serbisyo","Paglalarawan","Tinatayang Kredito"],
         toggle:          "I-toggle Light/Dark",
         basic: [
-          { title:"Pangunahing Site",   desc:"Responsive na GitHub Pages site", price:"£499" },
-          { title:"Bayad",              desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", price:"£199" },
-          { title:"Komunikasyon",       desc:"Rocket.Chat sa £5/buwan na VPS", price:"£149" }
+          { title:"Pangunahing Site",   desc:"Responsive na GitHub Pages site", credits:"2.5–4" },
+          { title:"Bayad",              desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", credits:"2.5–3" },
+          { title:"Komunikasyon",       desc:"Rocket.Chat sa £5/buwan na VPS", credits:"2.5–3.5" }
         ],
         advanced: [
-          { title:"Pasadyang Domain at DNS Management", desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.", price:"£49" },
-          { title:"Pag-setup ng SEO & Analytics",       desc:"On‑page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.", price:"£149" },
-          { title:"Pagsasanay sa Content Mgmt",         desc:"Turuan ang staff gumawa ng Markdown/Hugo/Jekyll at mag-deploy gamit ang GitHub Actions.", price:"£199" },
-          { title:"Performance Optimisation",           desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.", price:"£149" },
-          { title:"Branding & Logo Design",             desc:"Simple SVG logo, brand na mga kulay, favicon suite.", price:"£299" },
-          { title:"Multi-Language Support",             desc:"Static-site internationalization para sa iyong pangunahing merkado.", price:"£199" },
-          { title:"Email Newsletter Integration",       desc:"Mailchimp (free tier) o Mautic setup.", price:"£249" },
-          { title:"Backup & Disaster Recovery",         desc:"Awtomatikong snapshots ng site & VM, offsite sync.", price:"£199" },
-          { title:"Security Hardening",                 desc:"Firewall rules, fail2ban, SSL auto-renewal.", price:"£199" },
-          { title:"Chatbot / FAQ Bot",                  desc:"Botpress o open-source chatbot embedded sa static site.", price:"£299" },
-          { title:"CI/CD Pipelines",                    desc:"GitHub Actions: build, test, lint at auto-deploy sa push.", price:"£149" }
+          { title:"Pasadyang Domain at DNS Management", desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.", credits:"2.5–3" },
+          { title:"Pag-setup ng SEO & Analytics",       desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, na may dashboards.", credits:"2.5–4" },
+          { title:"Pagsasanay sa Content Mgmt",         desc:"Turuan ang staff mag-edit ng Markdown/Hugo/Jekyll at mag-deploy gamit ang GitHub Actions.", credits:"2.5–3.5" },
+          { title:"Performance Optimisation",           desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.", credits:"2.5–3" },
+          { title:"Branding & Logo Design",             desc:"Simpleng SVG logo, brand na mga kulay, favicon suite.", credits:"3–6" },
+          { title:"Multi-Language Support",             desc:"Internationalization ng static site para sa pangunahing merkado.", credits:"2.5–4" },
+          { title:"Email Newsletter Integration",       desc:"Mailchimp (libreng tier) o open-source Mautic setup.", credits:"2.5–3.5" },
+          { title:"Backup & Disaster Recovery",         desc:"Awtomatikong snapshots ng site at VM, offsite sync.", credits:"2.5–4" },
+          { title:"Security Hardening",                 desc:"Firewall rules, fail2ban, SSL auto-renewal.", credits:"2.5–3" },
+          { title:"Chatbot / FAQ Bot",                  desc:"Botpress o ibang open-source chatbot na naka-embed sa static site.", credits:"3–6" },
+          { title:"CI/CD Pipelines",                    desc:"GitHub Actions: build, test, lint at auto-deploy kapag push.", credits:"2.5–3" }
         ]
       }
     };
@@ -269,18 +310,23 @@
       document.getElementById('custom-services').innerText   = cfg.customServices;
       document.getElementById('basic-heading').innerText     = cfg.basicHeading;
       document.getElementById('advanced-heading').innerText  = cfg.advancedHeading;
-      document.querySelector('.toggle').innerText             = cfg.toggle;
+      document.querySelector('.toggle').innerText            = cfg.toggle;
 
       // headers
       document.querySelectorAll('.th-service').forEach(th=>th.innerText=cfg.th[0]);
       document.querySelectorAll('.th-desc').forEach(th=>th.innerText=cfg.th[1]);
-      document.querySelectorAll('.th-price').forEach(th=>th.innerText=cfg.th[2]);
+      document.querySelectorAll('.th-credits').forEach(th=>th.innerText=cfg.th[2]);
+
+      // credits explainer
+      document.getElementById('credits-title').innerText = cfg.creditsTitle;
+      const ul = document.getElementById('credits-points');
+      ul.innerHTML = cfg.creditsPoints.map(x => `<li>${x}</li>`).join("");
 
       // populate tables
       document.getElementById('basic-body').innerHTML = cfg.basic
-        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
+        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.credits}</td></tr>`).join('');
       document.getElementById('advanced-body').innerHTML = cfg.advanced
-        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.price}</td></tr>`).join('');
+        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.credits}</td></tr>`).join('');
     }
 
     document.getElementById('languageSelect')

@@ -111,23 +111,46 @@
     .details-content p { margin: .25rem 0; }
     .details-content ul { margin-left: 1.2rem; }
 
-    /* Credits explainer (collapsed by default) */
-    details.credits-explainer {
-      border: 2px dashed var(--accent-green);
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1rem;
-    }
-    details.credits-explainer summary {
-      cursor: pointer;
-      color: var(--accent-blue);
-      font-weight: 600;
-      margin: 0.25rem 0;
-      outline: none;
-      list-style: none;
-    }
-    details.credits-explainer[open] summary { margin-bottom: .5rem; }
-    .quote-note { margin-top: .5rem; font-style: italic; opacity: .9; }
+/* Credits explainer (collapsed by default) */
+details.credits-explainer {
+  border: 2px dashed var(--accent-green);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;          /* a touch more breathing room */
+  margin-bottom: 1rem;
+}
+
+details.credits-explainer summary {
+  cursor: pointer;
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin: 0.25rem 0;
+  outline: none;
+  list-style: none;
+}
+
+details.credits-explainer[open] summary {
+  margin-bottom: .5rem;
+}
+
+/* Proper indent for bullets so they don’t kiss the border */
+details.credits-explainer ul {
+  padding-left: 1.25rem;           /* indent bullets */
+  margin: .25rem 0 .5rem;          /* vertical spacing */
+  line-height: 1.6;
+  list-style: disc outside;
+}
+
+details.credits-explainer li {
+  margin: .2rem 0;
+}
+
+/* Keep the “Contact us for a quote.” line aligned nicely */
+details.credits-explainer .quote-note {
+  margin-top: .5rem;
+  margin-left: .25rem;
+  font-style: italic;
+  opacity: .9;
+}
 
     @media(max-width:600px) {
       header h1 { font-size:1.5rem; }

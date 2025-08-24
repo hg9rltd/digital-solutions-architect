@@ -82,18 +82,15 @@
       border-radius: 4px;
       margin-bottom: 1rem;
     }
-    .back-link:hover {
-      background: var(--accent-green);
-      color: #fff;
-    }
+    .back-link:hover { background: var(--accent-green); color: #fff; }
+
     .custom-note {
       text-align: center;
       font-style: italic;
       margin-bottom: 1rem;
     }
-    section + section {
-      margin-top: 2rem;
-    }
+    section + section { margin-top: 2rem; }
+
     .table-wrapper { overflow-x: auto; margin-top: 0.5rem; }
     table { width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid var(--accent-green); padding: .75rem; text-align: left; }
@@ -101,7 +98,20 @@
     [data-theme="dark"] th:not(:last-child) { border-right: 1px solid #000; }
     [data-theme="light"] th:not(:last-child) { border-right: 1px solid #fff; }
 
-    /* Credits explainer */
+    /* Click-to-expand behaviour */
+    .service-row { cursor: pointer; }
+    .service-row:focus { outline: 2px dashed var(--accent-green); outline-offset: -2px; }
+    .service-row:hover { background: rgba(0, 201, 111, 0.06); }
+    .details-row td {
+      background: var(--container-bg);
+      border-top: none;
+      border-bottom: 1px solid var(--accent-green);
+    }
+    .details-content { padding: .5rem .25rem; line-height: 1.6; }
+    .details-content p { margin: .25rem 0; }
+    .details-content ul { margin-left: 1.2rem; }
+
+    /* Credits explainer (collapsed by default) */
     details.credits-explainer {
       border: 2px dashed var(--accent-green);
       border-radius: 6px;
@@ -117,8 +127,6 @@
       list-style: none;
     }
     details.credits-explainer[open] summary { margin-bottom: .5rem; }
-    .credits-explainer ul { margin-left: 1.2rem; line-height: 1.6; }
-    .credits-explainer li { margin: .2rem 0; }
     .quote-note { margin-top: .5rem; font-style: italic; opacity: .9; }
 
     @media(max-width:600px) {
@@ -145,15 +153,14 @@
 
     <div id="custom-services" class="custom-note">Custom services available on request.</div>
 
-    <!-- Credits Explainer -->
+    <!-- Credits Explainer (collapsed) -->
     <details class="credits-explainer">
       <summary id="credits-title">About Service Credits</summary>
-      <ul id="credits-points">
-        <!-- Populated by JS -->
-      </ul>
+      <ul id="credits-points"></ul>
       <p id="quote-note" class="quote-note">Contact us for a quote.</p>
     </details>
 
+    <!-- BASIC -->
     <section>
       <h2 id="basic-heading">Basic Services</h2>
       <div class="table-wrapper">
@@ -170,6 +177,7 @@
       </div>
     </section>
 
+    <!-- ADVANCED -->
     <section>
       <h2 id="advanced-heading">Advanced Services</h2>
       <div class="table-wrapper">
@@ -188,12 +196,13 @@
   </div>
 
   <script>
+    // Content for all languages (EN / zh-CN / fil)
     const data = {
       en: {
-        pageTitle:       "Services",
-        back:            "← Back to Home",
-        customServices:  "Custom services available on request.",
-        creditsTitle:    "About Service Credits",
+        pageTitle: "Services",
+        back: "← Back to Home",
+        customServices: "Custom services available on request.",
+        creditsTitle: "About Service Credits",
         creditsPoints: [
           "Each credit equals 1.5 hours of consulting.",
           "5 credits = 1 day (7.5 hours). Work delivered on weekends only.",
@@ -201,35 +210,152 @@
           "Minimum billable per task is 2.5 credits (half-day).",
           "Credits expire 6 months after purchase."
         ],
-        quoteNote:       "Contact us for a quote.",
-        basicHeading:    "Basic Services",
+        quoteNote: "Contact us for a quote.",
+        basicHeading: "Basic Services",
         advancedHeading: "Advanced Services",
         th: ["Service","Description","Estimated Credits"],
-        toggle:          "Toggle Light/Dark",
+        toggle: "Toggle Light/Dark",
         basic: [
-          { title:"Starter Site",   desc:"Responsive GitHub Pages site", credits:"2.5–4" },
-          { title:"Payments",       desc:"Accept PayPal / Stripe / Crypto payments", credits:"2.5–3" },
-          { title:"Communications", desc:"Rocket.Chat on a £5/month VPS", credits:"2.5–3.5" }
+          {
+            title:"Starter Site",
+            desc:"Responsive GitHub Pages site",
+            credits:"2.5–4",
+            more:[
+              "A simple, clean website hosted on GitHub Pages with low maintenance.",
+              "Includes a lightweight theme, starter pages, and basic SEO-friendly structure."
+            ]
+          },
+          {
+            title:"Payments",
+            desc:"Accept PayPal / Stripe / Crypto payments",
+            credits:"2.5–3",
+            more:[
+              "Add a straightforward checkout or payment links/buttons.",
+              "We’ll wire your site to PayPal/Stripe; crypto options available if required."
+            ]
+          },
+          {
+            title:"Communications",
+            desc:"Rocket.Chat on a £5/month VPS",
+            credits:"2.5–3.5",
+            more:[
+              "Rocket.Chat is a Slack-like, open-source team chat (channels, DMs, file sharing).",
+              "Other free/open-source alternatives: Mattermost, Zulip.",
+              "We provision a small cloud VM, secure it, and deploy the chat server."
+            ]
+          }
         ],
         advanced: [
-          { title:"Custom Domain & DNS Management", desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.", credits:"2.5–3" },
-          { title:"SEO & Analytics Setup",           desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.", credits:"2.5–4" },
-          { title:"Content Management Training",     desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.", credits:"2.5–3.5" },
-          { title:"Performance Optimisation",        desc:"Image compression, caching headers, Uptime Kuma monitoring.", credits:"2.5–3" },
-          { title:"Branding & Logo Design",          desc:"Simple SVG logo, brand-colours, favicon suite.", credits:"3–6" },
-          { title:"Multi-Language Support",          desc:"Static-site internationalisation for your key markets.", credits:"2.5–4" },
-          { title:"Email Newsletter Integration",    desc:"Mailchimp (free tier) or open-source Mautic setup.", credits:"2.5–3.5" },
-          { title:"Backup & Disaster Recovery",      desc:"Automated snapshots of sites & VMs, offsite sync.", credits:"2.5–4" },
-          { title:"Security Hardening",              desc:"Firewall rules, fail2ban, SSL auto-renewal.", credits:"2.5–3" },
-          { title:"Chatbot / FAQ Bot",               desc:"Botpress or open-source chatbot embedded in static site.", credits:"3–6" },
-          { title:"CI/CD Pipelines",                 desc:"GitHub Actions: build, test, lint and auto-deploy on push.", credits:"2.5–3" }
+          {
+            title:"Custom Domain & DNS Management",
+            desc:"Acquire & configure your own domain, SSL via Let’s Encrypt.",
+            credits:"2.5–3",
+            more:[
+              "We purchase/configure your domain, set DNS records, and enable HTTPS.",
+              "Includes DNS guidance (A/AAAA/CNAME/TXT) and email sender basics if needed."
+            ]
+          },
+          {
+            title:"SEO & Analytics Setup",
+            desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, with dashboards.",
+            credits:"2.5–4",
+            more:[
+              "Add titles, descriptions, sitemap, robots directives, and basic schema.",
+              "Connect Google Analytics and submit your site to search consoles."
+            ]
+          },
+          {
+            title:"Content Management Training",
+            desc:"Teach staff to edit Markdown/Hugo/Jekyll and deploy via GitHub Actions.",
+            credits:"2.5–3.5",
+            more:[
+              "We train you to update site pages in Markdown (no coding required).",
+              "Changes pushed to GitHub auto-build and auto-deploy the site.",
+              "Optional: simple editorial workflow (branches, approvals)."
+            ]
+          },
+          {
+            title:"Performance Optimisation",
+            desc:"Image compression, caching headers, Uptime Kuma monitoring.",
+            credits:"2.5–3",
+            more:[
+              "Caching headers: tell browsers what to cache and for how long to speed up repeat visits.",
+              "Uptime Kuma: self-hosted monitoring that pings your site and alerts if it’s down.",
+              "We’ll compress large images and tune static-site performance."
+            ]
+          },
+          {
+            title:"Branding & Logo Design",
+            desc:"Simple SVG logo, brand-colours, favicon suite.",
+            credits:"3–6",
+            more:[
+              "Create/refresh a minimalist logo and colour palette.",
+              "Deliver web assets: SVG/PNG logo, favicons, social preview."
+            ]
+          },
+          {
+            title:"Multi-Language Support",
+            desc:"Static-site internationalisation for your key markets.",
+            credits:"2.5–4",
+            more:[
+              "Set up language toggles and structure content per locale.",
+              "We’ll guide your translation workflow and avoid duplicated effort."
+            ]
+          },
+          {
+            title:"Email Newsletter Integration",
+            desc:"Mailchimp (free tier) or open-source Mautic setup.",
+            credits:"2.5–3.5",
+            more:[
+              "Add a signup form and connect it to Mailchimp or self-hosted Mautic.",
+              "You can send newsletters and manage subscriber lists from a dashboard."
+            ]
+          },
+          {
+            title:"Backup & Disaster Recovery",
+            desc:"Automated snapshots of sites & VMs, offsite sync.",
+            credits:"2.5–4",
+            more:[
+              "Schedule automatic backups; keep copies offsite.",
+              "We document restore steps so you can recover quickly."
+            ]
+          },
+          {
+            title:"Security Hardening",
+            desc:"Firewall rules, fail2ban, SSL auto-renewal.",
+            credits:"2.5–3",
+            more:[
+              "Firewall: allow only required ports.",
+              "fail2ban: automatically bans IPs after repeated failed logins.",
+              "Ensure your TLS certificates renew automatically."
+            ]
+          },
+          {
+            title:"Chatbot / FAQ Bot",
+            desc:"Botpress or open-source chatbot embedded in static site.",
+            credits:"3–6",
+            more:[
+              "Embed a bot widget that answers common questions or routes enquiries.",
+              "Define simple conversation flows; add a small JS snippet to your site."
+            ]
+          },
+          {
+            title:"CI/CD Pipelines",
+            desc:"GitHub Actions: build, test, lint and auto-deploy on push.",
+            credits:"2.5–3",
+            more:[
+              "Push changes → GitHub Actions builds your static site → auto-deploy.",
+              "We provide a minimal, auditable workflow file and quick training."
+            ]
+          }
         ]
       },
+
       "zh-CN": {
-        pageTitle:       "服务",
-        back:            "← 返回首页",
-        customServices:  "可根据需求提供定制服务。",
-        creditsTitle:    "关于服务积分",
+        pageTitle: "服务",
+        back: "← 返回首页",
+        customServices: "可根据需求提供定制服务。",
+        creditsTitle: "关于服务积分",
         creditsPoints: [
           "每个积分等于 1.5 小时服务。",
           "5 个积分 = 1 天（7.5 小时）。仅在周末交付服务。",
@@ -237,35 +363,152 @@
           "单项任务的最低计费为 2.5 个积分（半天）。",
           "积分自购买起 6 个月后到期。"
         ],
-        quoteNote:       "请联系我们获取报价。",
-        basicHeading:    "基础服务",
+        quoteNote: "请联系我们获取报价。",
+        basicHeading: "基础服务",
         advancedHeading: "高级服务",
         th: ["服务","描述","预计服务积分"],
-        toggle:          "切换明/暗模式",
+        toggle: "切换明/暗模式",
         basic: [
-          { title:"入门网站",   desc:"响应式 GitHub Pages 网站", credits:"2.5–4" },
-          { title:"支付集成",   desc:"支持 PayPal / Stripe / 加密货币 支付", credits:"2.5–3" },
-          { title:"通讯",       desc:"在每月 £5 的 VPS 上部署 Rocket.Chat", credits:"2.5–3.5" }
+          {
+            title:"入门网站",
+            desc:"响应式 GitHub Pages 网站",
+            credits:"2.5–4",
+            more:[
+              "使用 GitHub Pages 托管的简洁网站，维护成本低。",
+              "包含轻量主题、起始页面与基础 SEO 结构。"
+            ]
+          },
+          {
+            title:"支付集成",
+            desc:"支持 PayPal / Stripe / 加密货币 支付",
+            credits:"2.5–3",
+            more:[
+              "添加简洁的结账或支付按钮/链接。",
+              "将网站接入 PayPal/Stripe；如需可提供加密货币选项。"
+            ]
+          },
+          {
+            title:"通讯",
+            desc:"在每月 £5 的 VPS 上部署 Rocket.Chat",
+            credits:"2.5–3.5",
+            more:[
+              "Rocket.Chat 是类似 Slack 的开源团队聊天（频道、私信、文件共享）。",
+              "其他开源/免费替代：Mattermost、Zulip。",
+              "我们会开通云端主机、加固安全并部署聊天服务。"
+            ]
+          }
         ],
         advanced: [
-          { title:"自定义域名和 DNS 管理", desc:"获取并配置您的域名，使用 Let’s Encrypt 配置 SSL。", credits:"2.5–3" },
-          { title:"SEO 和分析设置",         desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。", credits:"2.5–4" },
-          { title:"内容管理培训",           desc:"教授员工编辑 Markdown/Hugo/Jekyll，并通过 GitHub Actions 部署。", credits:"2.5–3.5" },
-          { title:"性能优化",               desc:"图像压缩、缓存头设置、Uptime Kuma 监控。", credits:"2.5–3" },
-          { title:"品牌和徽标设计",         desc:"简单的 SVG 徽标、品牌色和网站图标套件。", credits:"3–6" },
-          { title:"多语言支持",             desc:"为主要市场的静态站点提供国际化。", credits:"2.5–4" },
-          { title:"电子邮件通讯集成",       desc:"Mailchimp（免费版）或开源 Mautic 设置。", credits:"2.5–3.5" },
-          { title:"备份和灾难恢复",         desc:"网站与虚拟机的自动快照，异地同步。", credits:"2.5–4" },
-          { title:"安全加固",               desc:"防火墙规则、fail2ban、SSL 自动续期。", credits:"2.5–3" },
-          { title:"聊天机器人/常见问题机器人", desc:"在静态站点中嵌入 Botpress 或其他开源聊天机器人。", credits:"3–6" },
-          { title:"CI/CD 管道",            desc:"使用 GitHub Actions 实现构建、测试、Lint 与自动部署。", credits:"2.5–3" }
+          {
+            title:"自定义域名和 DNS 管理",
+            desc:"获取并配置您的域名，使用 Let’s Encrypt 配置 SSL。",
+            credits:"2.5–3",
+            more:[
+              "购买/配置域名，设置 DNS 记录并启用 HTTPS。",
+              "可提供 DNS 指南（A/AAAA/CNAME/TXT）及发信基础配置。"
+            ]
+          },
+          {
+            title:"SEO 和分析设置",
+            desc:"页面 SEO、元数据、Google Analytics、Bing Webmaster Tools 验证及仪表板。",
+            credits:"2.5–4",
+            more:[
+              "添加标题、描述、站点地图、robots 与基础 schema。",
+              "接入 GA 并向搜索平台提交站点。"
+            ]
+          },
+          {
+            title:"内容管理培训",
+            desc:"教授员工编辑 Markdown/Hugo/Jekyll 并通过 GitHub Actions 部署。",
+            credits:"2.5–3.5",
+            more:[
+              "培训如何用 Markdown 更新网页内容（无需编程）。",
+              "推送到 GitHub 后自动构建与部署。",
+              "可选：简单编辑流程（分支、审批）。"
+            ]
+          },
+          {
+            title:"性能优化",
+            desc:"图像压缩、缓存头设置、Uptime Kuma 监控。",
+            credits:"2.5–3",
+            more:[
+              "缓存头：告知浏览器缓存策略，加快二次访问。",
+              "Uptime Kuma：自建站点可用性监控，宕机即时告警。",
+              "压缩大图并优化静态站性能。"
+            ]
+          },
+          {
+            title:"品牌与徽标设计",
+            desc:"简洁 SVG 徽标、品牌色与网站图标套件。",
+            credits:"3–6",
+            more:[
+              "设计/更新极简徽标与配色方案。",
+              "交付 SVG/PNG 徽标、网站图标与社交分享图。"
+            ]
+          },
+          {
+            title:"多语言支持",
+            desc:"为主要市场的静态站点提供国际化。",
+            credits:"2.5–4",
+            more:[
+              "建立语言切换与多语言内容结构。",
+              "提供翻译流程建议，避免重复劳动。"
+            ]
+          },
+          {
+            title:"电子邮件通讯集成",
+            desc:"Mailchimp（免费版）或开源 Mautic 设置。",
+            credits:"2.5–3.5",
+            more:[
+              "添加订阅表单并连接 Mailchimp 或自建 Mautic。",
+              "在仪表板管理订阅者与发送简报。"
+            ]
+          },
+          {
+            title:"备份与灾难恢复",
+            desc:"网站与虚拟机的自动快照，异地同步。",
+            credits:"2.5–4",
+            more:[
+              "定期自动备份，并将副本异地保存。",
+              "提供恢复步骤文档，快速回滚。"
+            ]
+          },
+          {
+            title:"安全加固",
+            desc:"防火墙规则、fail2ban、SSL 自动续期。",
+            credits:"2.5–3",
+            more:[
+              "防火墙：仅放行必要端口。",
+              "fail2ban：连续登录失败将自动封禁 IP。",
+              "确保证书自动续期，HTTPS 始终有效。"
+            ]
+          },
+          {
+            title:"聊天机器人/常见问题机器人",
+            desc:"在静态站点中嵌入 Botpress 或其他开源聊天机器人。",
+            credits:"3–6",
+            more:[
+              "嵌入小部件，用于解答常见问题或收集咨询。",
+              "定义基础对话流程；向网站加入一段 JS 代码即可。"
+            ]
+          },
+          {
+            title:"CI/CD 管道",
+            desc:"使用 GitHub Actions：构建、测试、Lint 并自动部署。",
+            credits:"2.5–3",
+            more:[
+              "推送更改 → Actions 构建静态站 → 自动部署。",
+              "提供最小可维护的工作流文件与简短培训。"
+            ]
+          }
         ]
       },
+
       fil: {
-        pageTitle:       "Mga Serbisyo",
-        back:            "← Bumalik sa Home",
-        customServices:  "Magagamit ang pasadyang serbisyo sa kahilingan.",
-        creditsTitle:    "Tungkol sa Service Credits",
+        pageTitle: "Mga Serbisyo",
+        back: "← Bumalik sa Home",
+        customServices: "Magagamit ang pasadyang serbisyo sa kahilingan.",
+        creditsTitle: "Tungkol sa Service Credits",
         creditsPoints: [
           "Ang bawat credit ay katumbas ng 1.5 oras ng consulting.",
           "5 credits = 1 araw (7.5 oras). Nagtatrabaho lamang tuwing weekend.",
@@ -273,68 +516,228 @@
           "Minimum na sisingilin kada gawain: 2.5 credits (kalahating araw).",
           "Naglalaho ang credits pagkalipas ng 6 na buwan mula sa pagbili."
         ],
-        quoteNote:       "Makipag-ugnayan sa amin para sa quote.",
-        basicHeading:    "Pangunahing Serbisyo",
+        quoteNote: "Makipag-ugnayan sa amin para sa quote.",
+        basicHeading: "Pangunahing Serbisyo",
         advancedHeading: "Mga Advanced na Serbisyo",
         th: ["Serbisyo","Paglalarawan","Tinatayang Kredito"],
-        toggle:          "I-toggle Light/Dark",
+        toggle: "I-toggle Light/Dark",
         basic: [
-          { title:"Pangunahing Site",   desc:"Responsive na GitHub Pages site", credits:"2.5–4" },
-          { title:"Bayad",              desc:"Tumatanggap ng PayPal / Stripe / Crypto payments", credits:"2.5–3" },
-          { title:"Komunikasyon",       desc:"Rocket.Chat sa £5/buwan na VPS", credits:"2.5–3.5" }
+          {
+            title:"Pangunahing Site",
+            desc:"Responsive na GitHub Pages site",
+            credits:"2.5–4",
+            more:[
+              "Malinis at magaan na site na naka-host sa GitHub Pages, mababa ang maintenance.",
+              "May kasamang tema, panimulang mga pahina, at basic SEO structure."
+            ]
+          },
+          {
+            title:"Bayad",
+            desc:"Tumatanggap ng PayPal / Stripe / Crypto payments",
+            credits:"2.5–3",
+            more:[
+              "Magdagdag ng simpleng checkout o payment buttons/links.",
+              "Ikokonekta namin ang iyong site sa PayPal/Stripe; puwedeng may crypto."
+            ]
+          },
+          {
+            title:"Komunikasyon",
+            desc:"Rocket.Chat sa £5/buwan na VPS",
+            credits:"2.5–3.5",
+            more:[
+              "Ang Rocket.Chat ay parang Slack na open-source team chat (channels, DM, files).",
+              "Iba pang libre/open-source: Mattermost, Zulip.",
+              "Magpo-provision kami ng cloud VM, ise-secure at i-de-deploy ang chat."
+            ]
+          }
         ],
         advanced: [
-          { title:"Pasadyang Domain at DNS Management", desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.", credits:"2.5–3" },
-          { title:"Pag-setup ng SEO & Analytics",       desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, na may dashboards.", credits:"2.5–4" },
-          { title:"Pagsasanay sa Content Mgmt",         desc:"Turuan ang staff mag-edit ng Markdown/Hugo/Jekyll at mag-deploy gamit ang GitHub Actions.", credits:"2.5–3.5" },
-          { title:"Performance Optimisation",           desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.", credits:"2.5–3" },
-          { title:"Branding & Logo Design",             desc:"Simpleng SVG logo, brand na mga kulay, favicon suite.", credits:"3–6" },
-          { title:"Multi-Language Support",             desc:"Internationalization ng static site para sa pangunahing merkado.", credits:"2.5–4" },
-          { title:"Email Newsletter Integration",       desc:"Mailchimp (libreng tier) o open-source Mautic setup.", credits:"2.5–3.5" },
-          { title:"Backup & Disaster Recovery",         desc:"Awtomatikong snapshots ng site at VM, offsite sync.", credits:"2.5–4" },
-          { title:"Security Hardening",                 desc:"Firewall rules, fail2ban, SSL auto-renewal.", credits:"2.5–3" },
-          { title:"Chatbot / FAQ Bot",                  desc:"Botpress o ibang open-source chatbot na naka-embed sa static site.", credits:"3–6" },
-          { title:"CI/CD Pipelines",                    desc:"GitHub Actions: build, test, lint at auto-deploy kapag push.", credits:"2.5–3" }
+          {
+            title:"Pasadyang Domain at DNS Management",
+            desc:"Kunin at i-configure ang sariling domain, SSL gamit ang Let’s Encrypt.",
+            credits:"2.5–3",
+            more:[
+              "Bibili/ike-configure ang domain, ise-set ang DNS at io-on ang HTTPS.",
+              "Gabay sa DNS (A/AAAA/CNAME/TXT) at basic email sender kung kailangan."
+            ]
+          },
+          {
+            title:"Pag-setup ng SEO & Analytics",
+            desc:"On-page SEO, metadata, Google Analytics, Bing Webmaster Tools verification, na may dashboards.",
+            credits:"2.5–4",
+            more:[
+              "Magdagdag ng titles, descriptions, sitemap, robots at basic schema.",
+              "Ikonekta ang GA at isumite ang site sa search consoles."
+            ]
+          },
+          {
+            title:"Pagsasanay sa Content Mgmt",
+            desc:"Turuan ang staff mag-edit ng Markdown/Hugo/Jekyll at mag-deploy via GitHub Actions.",
+            credits:"2.5–3.5",
+            more:[
+              "Turuan kung paano mag-update ng content sa Markdown (walang coding).",
+              "Pagka-push sa GitHub, auto-build at auto-deploy na ang site.",
+              "Opsyonal: simple workflow (branches, approvals)."
+            ]
+          },
+          {
+            title:"Performance Optimisation",
+            desc:"Compression ng imahe, caching headers, Uptime Kuma monitoring.",
+            credits:"2.5–3",
+            more:[
+              "Caching headers: sabihin sa browser kung ano at gaano katagal i-cache.",
+              "Uptime Kuma: self-hosted monitoring at alert kapag down ang site.",
+              "Iko-compress ang malalaking larawan at i-tune ang performance."
+            ]
+          },
+          {
+            title:"Branding & Logo Design",
+            desc:"Simpleng SVG logo, brand na mga kulay, favicon suite.",
+            credits:"3–6",
+            more:[
+              "Gumawa/refresh ng minimalist na logo at palette.",
+              "Ihatid ang web assets: SVG/PNG, favicons, social preview."
+            ]
+          },
+          {
+            title:"Multi-Language Support",
+            desc:"Internationalization ng static site para sa pangunahing merkado.",
+            credits:"2.5–4",
+            more:[
+              "Magtakda ng language switch at istraktura ng content kada wika.",
+              "Gabay sa translation workflow para hindi doble trabaho."
+            ]
+          },
+          {
+            title:"Email Newsletter Integration",
+            desc:"Mailchimp (libreng tier) o open-source Mautic setup.",
+            credits:"2.5–3.5",
+            more:[
+              "Magdagdag ng signup form at ikonekta sa Mailchimp o self-hosted Mautic.",
+              "Magpadala ng newsletters at i-manage ang subscribers sa dashboard."
+            ]
+          },
+          {
+            title:"Backup & Disaster Recovery",
+            desc:"Awtomatikong snapshots ng site at VM, offsite sync.",
+            credits:"2.5–4",
+            more:[
+              "I-schedule ang backups at mag-keep ng kopya offsite.",
+              "Dokumentadong steps para mabilis na makapag-recover."
+            ]
+          },
+          {
+            title:"Security Hardening",
+            desc:"Firewall rules, fail2ban, SSL auto-renewal.",
+            credits:"2.5–3",
+            more:[
+              "Firewall: payagan lang ang kailangang ports.",
+              "fail2ban: auto-ban ng IP matapos sunod-sunod na failed logins.",
+              "Siguraduhing auto-renew ang TLS certificates."
+            ]
+          },
+          {
+            title:"Chatbot / FAQ Bot",
+            desc:"Botpress o ibang open-source chatbot na naka-embed sa static site.",
+            credits:"3–6",
+            more:[
+              "Mag-embed ng bot widget para sa FAQs o pagkuha ng enquiries.",
+              "Mag-define ng simpleng flows; idagdag ang maliit na JS snippet."
+            ]
+          },
+          {
+            title:"CI/CD Pipelines",
+            desc:"GitHub Actions: build, test, lint at auto-deploy kapag push.",
+            credits:"2.5–3",
+            more:[
+              "Mag-push ng changes → Actions mag-build → auto-deploy.",
+              "Magbibigay kami ng minimal na workflow file at maikling training."
+            ]
+          }
         ]
       }
     };
 
+    // Render function builds tables and details rows; rows are clickable to toggle their details
     function render(lang) {
       const cfg = data[lang];
-      document.getElementById('page-title').innerText        = cfg.pageTitle;
-      document.getElementById('back').innerText              = cfg.back;
-      document.getElementById('custom-services').innerText   = cfg.customServices;
-      document.getElementById('basic-heading').innerText     = cfg.basicHeading;
-      document.getElementById('advanced-heading').innerText  = cfg.advancedHeading;
-      document.querySelector('.toggle').innerText            = cfg.toggle;
+      document.getElementById('page-title').innerText = cfg.pageTitle;
+      document.getElementById('back').innerText = cfg.back;
+      document.getElementById('custom-services').innerText = cfg.customServices;
+      document.getElementById('basic-heading').innerText = cfg.basicHeading;
+      document.getElementById('advanced-heading').innerText = cfg.advancedHeading;
+      document.querySelector('.toggle').innerText = cfg.toggle;
 
-      // headers
-      document.querySelectorAll('.th-service').forEach(th=>th.innerText=cfg.th[0]);
-      document.querySelectorAll('.th-desc').forEach(th=>th.innerText=cfg.th[1]);
-      document.querySelectorAll('.th-credits').forEach(th=>th.innerText=cfg.th[2]);
+      // Headers
+      document.querySelectorAll('.th-service').forEach(th => th.innerText = cfg.th[0]);
+      document.querySelectorAll('.th-desc').forEach(th => th.innerText = cfg.th[1]);
+      document.querySelectorAll('.th-credits').forEach(th => th.innerText = cfg.th[2]);
 
-      // credits explainer
+      // Credits explainer
       document.getElementById('credits-title').innerText = cfg.creditsTitle;
+      document.getElementById('quote-note').innerText = cfg.quoteNote;
       const ul = document.getElementById('credits-points');
       ul.innerHTML = cfg.creditsPoints.map(x => `<li>${x}</li>`).join("");
-      document.getElementById('quote-note').innerText = cfg.quoteNote;
 
-      // populate tables
-      document.getElementById('basic-body').innerHTML = cfg.basic
-        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.credits}</td></tr>`).join('');
-      document.getElementById('advanced-body').innerHTML = cfg.advanced
-        .map(r=>`<tr><td>${r.title}</td><td>${r.desc}</td><td>${r.credits}</td></tr>`).join('');
+      // Populate tables with expandable rows
+      const makeRows = (list) => {
+        return list.map((r, idx) => {
+          const rowId = `row-${Math.random().toString(36).slice(2,9)}`;
+          const main =
+            `<tr class="service-row" tabindex="0" aria-expanded="false" data-target="${rowId}">
+              <td>${r.title}</td>
+              <td>${r.desc}</td>
+              <td>${r.credits}</td>
+            </tr>`;
+          const details =
+            `<tr id="${rowId}" class="details-row" hidden>
+              <td colspan="3">
+                <div class="details-content">
+                  ${r.more.map(p => `<p>${p}</p>`).join("")}
+                </div>
+              </td>
+            </tr>`;
+          return main + details;
+        }).join("");
+      };
+
+      document.getElementById('basic-body').innerHTML = makeRows(cfg.basic);
+      document.getElementById('advanced-body').innerHTML = makeRows(cfg.advanced);
+
+      // Wire up toggling
+      document.querySelectorAll('.service-row').forEach(tr => {
+        const targetId = tr.getAttribute('data-target');
+        const details = document.getElementById(targetId);
+        const toggle = () => {
+          const isHidden = details.hasAttribute('hidden');
+          if (isHidden) {
+            details.removeAttribute('hidden');
+            tr.setAttribute('aria-expanded', 'true');
+          } else {
+            details.setAttribute('hidden', '');
+            tr.setAttribute('aria-expanded', 'false');
+          }
+        };
+        tr.addEventListener('click', toggle);
+        tr.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
     }
 
+    // Language selector and initial render
     document.getElementById('languageSelect')
-      .addEventListener('change', e=>render(e.target.value));
-    // initial render
+      .addEventListener('change', e => render(e.target.value));
     render('en');
 
+    // Theme toggle
     function toggleTheme() {
       const html = document.documentElement;
       html.setAttribute('data-theme',
-        html.getAttribute('data-theme')==='light'?'dark':'light'
+        html.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
       );
     }
   </script>

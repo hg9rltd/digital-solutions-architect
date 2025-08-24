@@ -111,46 +111,35 @@
     .details-content p { margin: .25rem 0; }
     .details-content ul { margin-left: 1.2rem; }
 
-/* Credits explainer (collapsed by default) */
-details.credits-explainer {
-  border: 2px dashed var(--accent-green);
-  border-radius: 6px;
-  padding: 0.9rem 1.1rem;          /* a touch more breathing room */
-  margin-bottom: 1rem;
-}
-
-details.credits-explainer summary {
-  cursor: pointer;
-  color: var(--accent-blue);
-  font-weight: 600;
-  margin: 0.25rem 0;
-  outline: none;
-  list-style: none;
-}
-
-details.credits-explainer[open] summary {
-  margin-bottom: .5rem;
-}
-
-/* Proper indent for bullets so they don’t kiss the border */
-details.credits-explainer ul {
-  padding-left: 1.25rem;           /* indent bullets */
-  margin: .25rem 0 .5rem;          /* vertical spacing */
-  line-height: 1.6;
-  list-style: disc outside;
-}
-
-details.credits-explainer li {
-  margin: .2rem 0;
-}
-
-/* Keep the “Contact us for a quote.” line aligned nicely */
-details.credits-explainer .quote-note {
-  margin-top: .5rem;
-  margin-left: .25rem;
-  font-style: italic;
-  opacity: .9;
-}
+    /* Credits explainer (collapsed by default) */
+    details.credits-explainer {
+      border: 2px dashed var(--accent-green);
+      border-radius: 6px;
+      padding: 0.9rem 1.1rem;          /* breathing room */
+      margin-bottom: 1rem;
+    }
+    details.credits-explainer summary {
+      cursor: pointer;
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin: 0.25rem 0;
+      outline: none;
+      list-style: none;
+    }
+    details.credits-explainer[open] summary { margin-bottom: .5rem; }
+    details.credits-explainer ul {
+      padding-left: 1.25rem;           /* proper indent */
+      margin: .25rem 0 .5rem;
+      line-height: 1.6;
+      list-style: disc outside;
+    }
+    details.credits-explainer li { margin: .2rem 0; }
+    details.credits-explainer .quote-note {
+      margin-top: .5rem;
+      margin-left: .25rem;
+      font-style: italic;
+      opacity: .9;
+    }
 
     @media(max-width:600px) {
       header h1 { font-size:1.5rem; }
@@ -370,6 +359,28 @@ details.credits-explainer .quote-note {
               "Push changes → GitHub Actions builds your static site → auto-deploy.",
               "We provide a minimal, auditable workflow file and quick training."
             ]
+          },
+          {
+            title:"Advanced Website (e-Commerce)",
+            desc:"Full online store setup (nopCommerce or Magento Open Source).",
+            credits:"8–15",
+            more:[
+              "Design and configure a full e-commerce site: catalogue, cart, checkout, tax, shipping.",
+              "Platforms: nopCommerce (.NET) or Magento Open Source (PHP).",
+              "Includes payment gateways (Stripe/PayPal), shipping rules, basic theme customisation.",
+              "Hardening & hosting: provision and secure the environment; staging vs production as needed.",
+              "Optional: data migration, sample products, role permissions, and launch support."
+            ]
+          },
+          {
+            title:"Platform Extensions (nopCommerce & others)",
+            desc:"Install/configure extensions; light customisation for features.",
+            credits:"2.5–6",
+            more:[
+              "Add/adjust extensions for payments, shipping, tax, search, or admin tools.",
+              "Covers nopCommerce, Magento Open Source; lighter options like WooCommerce / PrestaShop on request.",
+              "Includes version compatibility checks and rollback plan."
+            ]
           }
         ]
       },
@@ -442,7 +453,7 @@ details.credits-explainer .quote-note {
           },
           {
             title:"内容管理培训",
-            desc:"教授员工编辑 Markdown/Hugo/Jekyll 并通过 GitHub Actions 部署。",
+            desc:"教授员工编辑 Markdown/Hugo/Jekyll，并通过 GitHub Actions 部署。",
             credits:"2.5–3.5",
             more:[
               "培训如何用 Markdown 更新网页内容（无需编程）。",
@@ -522,6 +533,27 @@ details.credits-explainer .quote-note {
             more:[
               "推送更改 → Actions 构建静态站 → 自动部署。",
               "提供最小可维护的工作流文件与简短培训。"
+            ]
+          },
+          {
+            title:"高级网站（电商）",
+            desc:"搭建完整网店（nopCommerce 或 Magento 开源版）。",
+            credits:"8–15",
+            more:[
+              "配置商品目录、购物车、结账、税费与配送规则。",
+              "平台：nopCommerce（.NET）或 Magento 开源版（PHP）。",
+              "含支付网关、基础主题定制与环境加固/分环境部署。",
+              "可选：数据迁移、示例商品、角色权限与发布支持。"
+            ]
+          },
+          {
+            title:"平台扩展（nopCommerce 等）",
+            desc:"安装/配置扩展；实现轻量功能定制。",
+            credits:"2.5–6",
+            more:[
+              "扩展支付、配送、税务、搜索或管理功能。",
+              "支持 nopCommerce、Magento；也可选 WooCommerce / PrestaShop。",
+              "包含版本兼容性检查与回滚方案。"
             ]
           }
         ]
@@ -676,6 +708,27 @@ details.credits-explainer .quote-note {
               "Mag-push ng changes → Actions mag-build → auto-deploy.",
               "Magbibigay kami ng minimal na workflow file at maikling training."
             ]
+          },
+          {
+            title:"Advanced Website (e-Commerce)",
+            desc:"Buong online store (nopCommerce o Magento Open Source).",
+            credits:"8–15",
+            more:[
+              "I-setup ang katalogo, cart, checkout, buwis at shipping rules.",
+              "Mga platform: nopCommerce (.NET) o Magento Open Source (PHP).",
+              "Kasama ang payment gateways, basic theme, hardening at hosting setup.",
+              "Opsyonal: data migration, sample products, roles at launch support."
+            ]
+          },
+          {
+            title:"Platform Extensions (nopCommerce at iba pa)",
+            desc:"Pag-install/kumpigura ng extensions; magaang custom features.",
+            credits:"2.5–6",
+            more:[
+              "Magdagdag/ayusin ang extensions para sa payments, shipping, tax, search, admin tools.",
+              "Saklaw ang nopCommerce, Magento; maaari rin ang WooCommerce / PrestaShop.",
+              "Kasama ang version compatibility checks at rollback plan."
+            ]
           }
         ]
       }
@@ -683,7 +736,7 @@ details.credits-explainer .quote-note {
 
     // Render function builds tables and details rows; rows are clickable to toggle their details
     function render(lang) {
-      const cfg = data[lang];
+      const cfg = data[lang] || data.en;
       document.getElementById('page-title').innerText = cfg.pageTitle;
       document.getElementById('back').innerText = cfg.back;
       document.getElementById('custom-services').innerText = cfg.customServices;
@@ -704,7 +757,7 @@ details.credits-explainer .quote-note {
 
       // Populate tables with expandable rows
       const makeRows = (list) => {
-        return list.map((r, idx) => {
+        return list.map((r) => {
           const rowId = `row-${Math.random().toString(36).slice(2,9)}`;
           const main =
             `<tr class="service-row" tabindex="0" aria-expanded="false" data-target="${rowId}">
